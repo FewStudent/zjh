@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.TUserArchivesMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.TUserArchives">
+        <id column="id" property="id" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="user_id" property="userId" />
+        <result column="activity" property="activity" />
+        <result column="personal_synopsis" property="personalSynopsis" />
+        <result column="role" property="role" />
+        <result column="speech_topic" property="speechTopic" />
+        <result column="speech_file" property="speechFile" />
+        <result column="phone_file" property="phoneFile" />
+        <result column="account_name" property="accountName" />
+        <result column="account_blank" property="accountBlank" />
+        <result column="account" property="account" />
+        <result column="remark_name" property="remarkName" />
+        <result column="remark_content" property="remarkContent" />
+        <result column="status" property="status" />
+        <result column="status_date" property="statusDate" />
+        <result column="s_remark_name" property="sRemarkName" />
+        <result column="s_remark_content" property="sRemarkContent" />
+        <result column="e_remark_name" property="eRemarkName" />
+        <result column="e_remark_content" property="eRemarkContent" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, update_time, user_id, activity, personal_synopsis, role, speech_topic, speech_file, phone_file, account_name, account_blank, account, remark_name, remark_content, status, status_date, s_remark_name, s_remark_content, e_remark_name, e_remark_content
+    </sql>
+
+    <select id="findAllUserArchives" resultMap="BaseResultMap">
+        SELECT
+        a.*, b.name AS userIdName
+        FROM
+        `t_user_archives` a,
+        t_user b
+        WHERE
+        a.user_id = b.id
+        <if test="status != null">
+            and a.status = #{status}
+        </if>
+        <if test="lrole != null">
+            and b.create_by = #{lrole}
+        </if>
+        <if test="search != null and search != ''">
+            and (b.name like CONCAT('%',#{search},'%')
+            or b.company like CONCAT('%',#{search},'%')
+            or b.phone like CONCAT('%',#{search},'%'))
+        </if>
+        order by create_time desc
+    </select>
+
+</mapper>

@@ -1,0 +1,110 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <!--隐藏字段-->
+            <input type="hidden" id="id" name="id" value="${item.id}"/>
+            <input type="hidden" id="createBy" value="${item.createBy}">
+            <input type="hidden" id="createTime" name="createTime" value="${item.createTime}" />
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="company" name="公司名称" underline="true" value="${item.company}"/>
+                    <#input id="companyLeader" name="公司负责人" underline="true" value="${item.companyLeader}"/>
+                    <#input id="pickUp" name="嘉宾对接人" underline="true" value="${item.pickUp}"/>
+                    <input type="hidden" id="cardVal" value="${item.card}">
+                    <#select id="card" name="证件类型">
+                       <option value="0">贵宾证</option>
+                       <option value="1">嘉宾证</option>
+                       <option value="2">参观证</option>
+                    </#select>
+                </div>
+
+                <div class="col-sm-6">
+                    <#input id="area" name="所属区域" underline="true" value="${item.area}"/>
+                    <#input id="teamNums" name="团队人数" underline="true" value="${item.teamNums}"/>
+                    <#input id="linkUser" name="团队联系人" underline="true" value="${item.linkUser}"/>
+                    <#input id="linkPhone" name="联系人电话" underline="true" value="${item.linkPhone}"/>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TTeamInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TTeamInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeam/tTeam_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#jUseCarDate'
+    });
+    laydate.render({
+        elem: '#jUseCarTime',
+        type:'time'
+    });
+    laydate.render({
+        elem: '#sUseCarDate'
+    });
+    laydate.render({
+        elem: '#sUseCarTime',
+        type:'time'
+    });
+    laydate.render({
+        elem: '#cUseCarDate'
+    });
+    laydate.render({
+        elem: '#cUseCarTime',
+        type:'time'
+    });
+    laydate.render({
+        elem: '#houseInDate',
+        type:'datetime'
+    });
+    laydate.render({
+        elem: '#houseOutDate',
+        type:'datetime'
+    });
+
+    // 删除文件
+    function deleteSFile(obj){
+        var fileid = $(obj).attr("filename");
+        var dataform = "fileid=" + fileid + "&aid=" + $("#id").val();
+        $.ajax({
+            type: 'post',
+            url: Feng.ctxPath + '/tTeamArchives/delete_sfile',
+            data: dataform,
+            dataType: 'json',
+            success: function (result) {
+                if(result == "success"){
+                    $(obj).parent().remove();
+                }
+                layer.msg(result);
+            }, error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+
+    function deletePFile(obj){
+        var fileid = $(obj).attr("filename");
+        var dataform = "fileid=" + fileid + "&aid=" + $("#id").val();
+        $.ajax({
+            type: 'post',
+            url: Feng.ctxPath + '/tTeamArchives/delete_pfile',
+            data: dataform,
+            dataType: 'json',
+            success: function (result) {
+                if(result == "success"){
+                    $(obj).parent().remove();
+                }
+                layer.msg(result);
+            }, error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+</script>
+@}

@@ -1,0 +1,66 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <form id="archiveF">
+                <div class="row">
+                    <input type="hidden" id="userId" name="userId" value="${userId}">
+                    <div class="col-sm-6 b-r">
+                        <#input id="activity" name="参与活动" underline="true"/>
+                        <#input id="personalSynopsis" name="个人简介" underline="true"/>
+                        <#select id="role" name="角色" underline="true">
+                            <option value="主持人">主持人</option>
+                            <option value="演讲嘉宾">演讲嘉宾</option>
+                            <option value="观众">观众</option>
+                        </#select>
+                        <#input id="speechTopic" name="演讲主题" underline="true"/>
+                        <#input id="remarkName" name="备注人" underline="true"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <#input id="accountName" name="开户姓名" underline="true"/>
+                        <#input id="accountBlank" name="开户银行" underline="true"/>
+                        <#input id="account" name="开户账号" underline="true"/>
+                        <#input id="remarkContent" name="备注内容" underline="true"/>
+                    </div>
+                </div>
+                <!--演讲材料-->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>演讲材料：</h4>
+                    </div>
+                    <div id="uploader" class="wu-example col-sm-9">
+                        <!--用来存放文件信息-->
+                        <div id="thelist" class="uploader-list"></div>
+                        <div class="btns">
+                            <div id="picker">选择演讲材料</div>
+                        </div>
+                    </div>
+                </div>
+                <!--活动相片-->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>个人证件照：</h4>
+                    </div>
+                    <div id="uploader1" class="wu-example col-sm-9">
+                        <div id="uploader-demo">
+                            <!--用来存放item-->
+                            <div id="fileList" class="uploader-list row"></div>
+                            <div id="filePicker" style="clear: both;margin-top: 15px;">选择图片</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+                    clickFun="TUserInfoDlg.addArchiveSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+                    clickFun="TUserInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUser/tUser_info.js"></script>
+@}

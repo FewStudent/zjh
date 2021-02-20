@@ -1,0 +1,135 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<div class="row">
+				<!--不显示字段-->
+				<h3>个人信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="createTime" name="创建时间" value="${item.createTime}"
+						disabled="true" underline="true"/>
+					<#input id="name" name="用户姓名" underline="true" value="${item.name}"
+						disabled="true" />
+					<input type="hidden" id="sexVal" value="${item.sex}" />
+					<#select disabled="true" id="sex" name="性别" underline="true" disabled="true">
+					<option value="0">男</option>
+					<option value="1">女</option>
+					</#select>
+					<#input id="company" name="公司/单位" underline="true"
+						value="${item.company}" disabled="true" />
+				</div>
+				<div class="col-sm-6">
+
+					<#input id="job" name="职务" underline="true" value="${item.job}"
+						disabled="true" />
+					<input type="hidden" id="cardVal" value="${item.card}" />
+					<#select disabled="true" id="card" name="证件类型" underline="true">
+					<option value="0">贵宾证</option>
+					<option value="1">嘉宾证</option>
+					<option value="2">参观证</option>
+					</#select>
+
+					<#input id="pickUp" name="嘉宾对接" underline="true"
+						value="${item.pickUp}" disabled="true" />
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>用餐信息</h3>
+				<div class="col-sm-6 b-r">
+					<p id="tip" style="color: red; font-size: 12px;"></p>
+					<input type="hidden" value="${item.eatDinner}" id="eatDinnerVal" />
+					<#select disabled="true" id="eatDinner" name="晚宴" underline="true">
+						<option value="0">否</option>
+						<option value="1">是</option>
+					</#select>
+					<#input disabled="true" value="${item.eatLunch}" id="eatLunch" type="number"
+						name="自助午餐" underline="true" />
+					<#input disabled="true" value="${item.eatWorkMeal}" id="eatWorkMeal" type="number"
+						name="工作餐" underline="true" />
+				</div>
+
+				<div class="col-sm-6">
+					<input type="hidden" value="${item.eatPayType}" id="eatPayTypeVal" />
+					<#select disabled="true" id="eatPayType" name="支付方式" underline="true">
+					<option value="0">自费</option>
+					<option value="1">公费</option>
+					<option value="2">其他(填写备注信息)</option>
+					</#select>
+					<#input disabled="true" value="${item.eatAddRemark}" id="eatAddRemark" name="备注"
+						underline="true" />
+					<#input disabled="true" value="${item.eatAttention}" id="eatAttention" name="注意事项"
+						underline="true" />
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>安排信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" value="${item.eatArrangeRemark}" id="eatArrangeRemark"
+						name="备注" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<input type="hidden" value="${item.eatArrange}" id="eatArrangeVal" />
+					<#select disabled="true" id="eatArrange" name="安排状态" underline="true">
+					<option value="0">未安排</option>
+					<option value="1">已安排</option>
+					</#select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>审核信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" value="${item.eatArrangeRemark}" id="eatArrangeRemark"
+						name="备注" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<input type="hidden" value="${item.eatStatus}" id="eatStatusVal" />
+					<#select disabled="true" id="eatStatus" name="审核状态" underline="true">
+					<option value="0">未审核</option>
+					<option value="1">已审核</option>
+					<option value="2">已退回</option>
+					</#select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>安排信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" value="${item.eatEndRemarkName}" id="eatEndRemarkName"
+						name="备注" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<input type="hidden" value="${item.eatEnd}" id="eatEndVal" />
+					<#select disabled="true" id="eatEnd" name="结束状态" underline="true">
+					<option value="0">未结束</option>
+					<option value="1">已结束</option>
+					</#select>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row btn-group-m-t">
+			<div class="col-sm-10">
+				<#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser"
+					clickFun="TUserEatInfoDlg.close()" />
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUserEat/tUserEat_info.js"></script>
+<script>
+	$(function() {
+
+
+		laydate.render({
+			elem : '#restaurantDate',
+			type : 'datetime'
+		});
+	})
+</script>
+@}

@@ -1,0 +1,57 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <form id="carF">
+                <div class="row">
+                    <input type="hidden" id="teamId" name="teamId" value="${teamId}">
+                    <div class="col-sm-6 b-r">
+                        <#input id="needCarDate" name="用车日期" underline="true"/>
+                        <#select id="attention" name="用车事项">
+                            <option value="0">接人</option>
+                            <option value="1">送客</option>
+                        </#select>
+                        <#input id="trafficNumber" name="航班/车次" underline="true"/>
+                        <#input id="ridePeoples" name="乘车人数" underline="true"/>
+                        <#input id="ridePlace" name="乘车地点" underline="true"/>
+                        <#input id="destination" name="目的地" underline="true"/>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <#input id="needCarTime" name="用车时间" underline="true"/>
+                        <#input id="accompanyLeader" name="陪同领导" underline="true"/>
+                        <#select id="payType" name="付费方式">
+                            <option value="0">自费</option>
+                            <option value="1">公费</option>
+                            <option value="2">其他（请于备注填写）</option>
+                        </#select>
+                        <#input id="stopPrice" name="停车费用" underline="true"/>
+                        <#input id="remarkName" name="联系人" underline="true"/>
+                        <#input id="remarkContent" name="备注内容" underline="true"/>
+                    </div>
+                </div>
+            </form>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+                    clickFun="TTeamInfoDlg.addCarSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TTeamInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeam/tTeam_info.js"></script>
+<script>
+    $(function(){
+        laydate.render({
+           elem: '#needCarDate'
+        });
+        laydate.render({
+            elem: '#needCarTime',
+            type: 'time'
+        });
+    });
+</script>
+@}

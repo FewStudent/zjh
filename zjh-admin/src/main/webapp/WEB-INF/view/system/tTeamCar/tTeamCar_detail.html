@@ -1,0 +1,264 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<div class="row">
+				<!--不显示字段-->
+				<h3>基本信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="createTime" name="创建时间" value="${item.createTime}"
+						disabled="true" />
+					<#input id="company" name="公司/单位" underline="true" disabled="true" />
+					<#input id="companyLeader" name="公司负责人"
+						value="${item.companyLeader}" underline="true" disabled="true" />
+					<#input id="area" name="所属区域" value="${item.area}" underline="true"
+						disabled="true" />
+
+				</div>
+				<div class="col-sm-6">
+					<#input id="pickUp" name="嘉宾对接" underline="true"
+						value="${item.pickUp}" disabled="true" />
+					<#input id="teamNums" type="number" name="团队人数" underline="true"
+						value="${item.teamNums}" disabled="true" />
+					<#input id="linkUser" name="团队联系人" underline="true"
+						value="${item.linkUser}" disabled="true" />
+					<#input id="linkPhone" name="团队联系人电话" underline="true"
+						value="${item.linkPhone}" disabled="true" />
+				</div>
+			</div>
+
+			<hr>
+			<div class="row">
+				<h3>接车信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" id="jUseCarDate" name="用车日期"
+						value="${item.jUseCarDate}" underline="true" />
+					<#input disabled="true" id="jUseCarTime" name="用车时间"
+						value="${item.jUseCarTime}" underline="true" />
+					<#input disabled="true" id="jTrafficNum" name="班次"
+						value="${item.jTrafficNum}" underline="true" />
+					<#input disabled="true" id="jRidePlace" name="乘车地点"
+						value="${item.jRidePlace}" underline="true" />
+					<#input disabled="true" id="jDestination" name="目的地"
+						value="${item.jDestination}" underline="true" />
+					<#input disabled="true" id="jRidePeoples" name="乘车人数"
+						value="${item.jRidePeoples}" underline="true" />
+					<#input disabled="true" id="jAccompanyLeader" name="陪同领导"
+						value="${item.jAccompanyLeader}" underline="true" />
+					<input id="jPayTypeVal" value="${item.jPayType}" type="hidden" />
+					<#select disabled="true" id="jPayType" name="付费方式" underline="true">
+					<option value="0">自费</option>
+					<option value="1">公费</option>
+					<option value="2">其他(填写备注信息)</option>
+					</#select>
+					<input id="jHasStopCardVal" value="${item.jHasStopCard}"
+						type="hidden" />
+
+					<#select disabled="true" id="jHasStopCard" name="是否有停车证"
+						underline="true">
+					<option value="0">否</option>
+					<option value="1">是</option>
+					</#select>
+				</div>
+				<div class="col-sm-6">
+					<#input disabled="true" id="jAddRemark" name="添加备注"
+						value="${item.jAddRemark}" underline="true" />
+					<input id="jCarArrangeVal" value="${item.jCarArrange}"
+						type="hidden" />
+					<#select disabled="true" id="jCarArrange" name="安排情况"
+						underline="true">
+					<option value="0">未安排</option>
+					<option value="1">已安排</option>
+					</#select>
+					<#input disabled="true" id="jDriver" name="司机"
+						value="${item.jDriver}" underline="true" />
+					<#input disabled="true" id="jDriverPhone" name="司机电话"
+						value="${item.jDriverPhone}" underline="true" />
+					<#input disabled="true" id="jCarCard" name="司机车牌"
+						value="${item.jCarCard}" underline="true" />
+					<#input disabled="true" id="jCarType" name="接车类型"
+						value="${item.jCarType}" underline="true" />
+					<#input disabled="true" id="jArrangeRemark" name="安排备注"
+						value="${item.jArrangeRemark}" underline="true" />
+
+					<input id="jCarSTypeVal" value="${item.jCarSType}" type="hidden" />
+					<#select disabled="true" id="jCarSType" name="接送情况"
+						underline="true">
+					<option value="0">未接送</option>
+					<option value="1">已接送</option>
+					</#select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>送车信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" id="sUseCarDate" name="用车日期"
+						value="${item.sUseCarDate}" underline="true" />
+					<#input disabled="true" id="sUseCarTime" name="用车时间"
+						value="${item.sUseCarTime}" underline="true" />
+					<#input disabled="true" id="sTrafficNum" name="班次"
+						value="${item.sTrafficNum}" underline="true" />
+					<#input disabled="true" id="sRidePlace" name="乘车地点"
+						value="${item.sRidePlace}" underline="true" />
+					<#input disabled="true" id="sDestination" name="目的地"
+						value="${item.sDestination}" underline="true" />
+					<#input disabled="true" id="sRidePeoples" name="乘车人数"
+						value="${item.sRidePeoples}" underline="true" />
+					<#input disabled="true" id="sAccompanyLeader" name="陪同领导"
+						value="${item.sAccompanyLeader}" underline="true" />
+
+					<input id="sPayTypeVal" value="${item.sPayType}" type="hidden" />
+					<#select disabled="true" id="sPayType" name="付费方式" underline="true">
+					<option value="0">自费</option>
+					<option value="1">公费</option>
+					<option value="2">其他(填写备注信息)</option>
+					</#select>
+
+				</div>
+				<div class="col-sm-6">
+					<#input disabled="true" id="sAddRemark" name="添加备注"
+						value="${item.sAddRemark}" underline="true" />
+					<input id="sCarArrangeVal" value="${item.sCarArrange}"
+						type="hidden" />
+					<#select disabled="true" id="sCarArrange" name="安排情况"
+						underline="true">
+					<option value="0">未安排</option>
+					<option value="1">已安排</option>
+					</#select>
+					<#input disabled="true" id="sDriver" name="司机"
+						value="${item.sDriver}" underline="true" />
+					<#input disabled="true" id="sDriverPhone" name="司机电话"
+						value="${item.sDriverPhone}" underline="true" />
+					<#input disabled="true" id="sCarCard" name="司机车牌"
+						value="${item.sCarCard}" underline="true" />
+					<#input disabled="true" id="sCarType" name="接车类型"
+						value="${item.sCarType}" underline="true" />
+					<#input disabled="true" id="sArrangeRemark" name="安排备注"
+						value="${item.sArrangeRemark}" underline="true" />
+					<input id="sCarSTypeVal" value="${item.sCarSType}" type="hidden" />
+					<#select disabled="true" id="sCarSType" name="接送情况"
+						underline="true">
+					<option value="0">未接送</option>
+					<option value="1">已接送</option>
+					</#select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>市区用车信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" id="cUseCarDate" name="用车日期"
+						value="${item.cUseCarDate}" underline="true" />
+					<#input disabled="true" id="cUseCarTime" name="用车时间"
+						value="${item.cUseCarTime}" underline="true" />
+					<#input disabled="true" id="cRidePlace" name="乘车地点"
+						value="${item.cRidePlace}" underline="true" />
+					<#input disabled="true" id="cDestination" name="目的地"
+						value="${item.cDestination}" underline="true" />
+					<#input disabled="true" id="cRidePeoples" name="乘车人数"
+						value="${item.cRidePeoples}" underline="true" />
+					<#input disabled="true" id="cAccompanyLeader" name="陪同领导"
+						value="${item.cAccompanyLeader}" underline="true" />
+
+					<input id="cPayTypeVal" value="${item.cPayType}" type="hidden" />
+					<#select disabled="true" id="cPayType" name="付费方式" underline="true">
+					<option value="0">自费</option>
+					<option value="1">公费</option>
+					<option value="2">其他(填写备注信息)</option>
+					</#select>
+
+				</div>
+				<div class="col-sm-6">
+					<#input disabled="true" id="sAddRemark" name="添加备注"
+						value="${item.sAddRemark}" underline="true" />
+					<input id="cCarArrangeVal" value="${item.cCarArrange}"
+						type="hidden" />
+					<#select disabled="true" id="cCarArrange" name="安排情况"
+						underline="true">
+					<option value="0">未安排</option>
+					<option value="1">已安排</option>
+					</#select>
+					<#input disabled="true" id="cDriver" name="司机"
+						value="${item.cDriver}" underline="true" />
+					<#input disabled="true" id="cDriverPhone" name="司机电话"
+						value="${item.cDriverPhone}" underline="true" />
+					<#input disabled="true" id="cCarCard" name="司机车牌"
+						value="${item.cCarCard}" underline="true" />
+					<#input disabled="true" id="cCarType" name="接车类型"
+						value="${item.cCarType}" underline="true" />
+					<#input disabled="true" id="cArrangeRemark" name="安排备注"
+						value="${item.cArrangeRemark}" underline="true" />
+                    <input id="cCarSTypeVal" value="${item.cCarSType}" type="hidden" />
+                    <#select disabled="true" id="cCarSType" name="接送情况"
+                    underline="true">
+                        <option value="0">未接送</option>
+                        <option value="1">已接送</option>
+                    </#select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>审核信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" id="carStatusReamrkName" name="审核备注人"
+						value="${item.carStatusReamrkName}" underline="true" />
+					<#input disabled="true" id="carStatusRemark" name="审核备注人"
+						value="${item.carStatusRemark}" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<input type="hidden" id="carStatusVal" value="${item.carStatus}" />
+					<#select id="carStatus" name="审核情况">
+					<option value="0">未审核</option>
+					<option value="1">已审核</option>
+					</#select>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>结束信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" id="carEndRemarkName" name="结束备注人"
+						value="${item.carEndRemarkName}" underline="true" />
+					<#input disabled="true" id="carEndRemark" name="结束备注人"
+						value="${item.carEndRemark}" underline="true" />
+				</div>
+				<div class="col-sm-6">
+					<input type="hidden" id="carEndVal" name="安排备注"
+						value="${item.carEnd}" />
+					<#select id="carEnd" name="结束">
+					<option value="0">未结束</option>
+					<option value="1">已结束</option>
+					</#select>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="row btn-group-m-t">
+		<div class="col-sm-10">
+			<#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser"
+				clickFun="TTeamCarInfoDlg.close()" />
+		</div>
+	</div>
+</div>
+
+</div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeamCar/tTeamCar_info.js"></script>
+<script>
+    $(function () {
+
+
+        laydate.render({
+            elem:'#needCarDate'
+        });
+
+        laydate.render({
+            elem:'#needCarTime',
+            type:'time'
+        });
+    })
+</script>
+@}

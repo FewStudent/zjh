@@ -1,0 +1,88 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<div class="row">
+				<!--不显示字段-->
+				<h3>基本信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="createTime" name="创建时间" value="${item.createTime}"
+						disabled="true" />
+					<#input id="company" name="公司/单位" underline="true" disabled="true" />
+					<#input id="companyLeader" name="公司负责人"
+						value="${item.companyLeader}" underline="true" disabled="true" />
+					<#input id="area" name="所属区域" value="${item.area}" underline="true"
+						disabled="true" />
+
+				</div>
+				<div class="col-sm-6">
+					<#input id="pickUp" name="嘉宾对接" underline="true"
+						value="${item.pickUp}" disabled="true" />
+					<#input id="teamNums" type="number" name="团队人数" underline="true"
+						value="${item.teamNums}" disabled="true" />
+					<#input id="linkUser" name="团队联系人" underline="true"
+						value="${item.linkUser}" disabled="true" />
+					<#input id="linkPhone" name="团队联系人电话" underline="true"
+						value="${item.linkPhone}" disabled="true" />
+				</div>
+			</div>
+			
+			<div class="row">
+				<h3>活动信息</h3>
+				<div class="col-sm-6 b-r">
+					<input type="hidden" id="id" name="主键id" value="${item.id}"
+						underline="true" />
+					<#input id="activity" name="活动" value="${item.activity}"
+						underline="true" />
+					<#input id="personalSynopsis" name="简介"
+						value="${item.personalSynopsis}" underline="true" />
+					<input type="hidden" id="roleVal" name="角色" value="${item.role}"
+						underline="true" />
+					<#select id="role" name="角色" underline="true">
+					<option value="0">主持人</option>
+					<option value="1">演讲嘉宾</option>
+					<option value="2">观众</option>
+					</#select>
+					<#input id="speechTopic" name="演讲主题" value="${item.speechTopic}"
+						underline="true" />
+					<#input id="accountName" name="开户姓名" value="${item.accountName}" />
+				</div>
+
+				<div class="col-sm-6">
+					<#input id="accountBlank" name="开户行" value="${item.accountBlank}"
+						underline="true" />
+					<#input id="account" name="开户账号" value="${item.account}"
+						underline="true" />
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<h3>审核信息</h3>
+				<div class="col-sm-12 b-r">
+					<input type="hidden" id="id" name="id" value="${id}">
+					<#select id="status" name="审核" underline="true">
+					<option value="0">请选择...</option>
+					<option value="1">通过</option>
+					<option value="2">退回</option>
+					</#select>
+					<#input id="sRemarkName" name="备注人" underline="true" />
+					<#input id="sRemarkContent" name="备注内容" underline="true" />
+				</div>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="TTeamArchivesInfoDlg.examineSubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="TTeamArchivesInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/modular/system/tTeamArchives/tTeamArchives_info.js"></script>
+@}

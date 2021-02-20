@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.rest.modular.rest.dao.SysAdminMapper">
+
+
+    <select id="findAllAdmins" resultType="com.stylefeng.guns.rest.modular.rest.model.SysAdmin">
+        SELECT
+	id,
+	create_time,
+	update_time,
+	sex,
+	department,
+	job,
+	phone,
+	account,
+	enter,
+	examine,
+	operation,
+	implement,
+	house,
+	meals,
+	car,
+	admin,
+	NAME
+FROM
+	sys_admin;
+    </select>
+</mapper>

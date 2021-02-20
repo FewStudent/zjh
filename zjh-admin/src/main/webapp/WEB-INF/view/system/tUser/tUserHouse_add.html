@@ -1,0 +1,55 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <form id="houseF">
+                <div class="row">
+                    <input type="hidden" id="userId" name="userId" value="${userId}">
+                    <div class="col-sm-6 b-r">
+                        <#input id="checkInDate" name="入住日期" underline="true"/>
+                        <#input id="hotel" name="酒店名称" underline="true"/>
+                        <#input id="roomType" name="房间类型" underline="true"/>
+                        <#input id="price" name="单价" underline="true"/>
+                        <#input id="total" name="房间数" underline="true"/>
+                        <#input id="totalPrice" name="总价格" underline="true"/>
+                        <#select id="payType" name="付费方式">
+                            <option value="0">自费</option>
+                            <option value="1">公费</option>
+                            <option value="2">其他（请于备注填写）</option>
+                        </#select>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <#input id="checkOutDate" name="退房日期" underline="true"/>
+                        <#input id="roomNum" name="入住房间号" underline="true"/>
+                        <#input id="vacant" name="空置床位" underline="true"/>
+                        <#input id="spliceRoom" name="是否拼房" underline="true"/>
+                        <#input id="splicePeople" name="拼房人" underline="true"/>
+                        <#input id="remarkName" name="联系人" underline="true"/>
+                        <#input id="remarkContent" name="备注内容" underline="true"/>
+                    </div>
+                </div>
+            </form>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TUserInfoDlg.addHouseSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TUserInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUser/tUser_info.js"></script>
+<script>
+    $(function () {
+        laydate.render({
+            elem: '#checkInDate',
+            type: 'datetime'
+        });
+        laydate.render({
+            elem: '#checkOutDate',
+            type: 'datetime'
+        });
+    });
+</script>
+@}

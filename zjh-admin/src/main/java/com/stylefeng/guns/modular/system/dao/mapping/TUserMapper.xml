@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.TUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.TUser">
+        <id column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="company" property="company"/>
+        <result column="job" property="job"/>
+        <result column="phone" property="phone"/>
+        <result column="email" property="email"/>
+        <result column="follow" property="follow"/>
+        <result column="follow_name" property="followName"/>
+        <result column="pick_up_user" property="pickUpUser"/>
+        <result column="certificates" property="certificates"/>
+        <result column="accompany" property="accompany"/>
+        <result column="translate" property="translate"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, update_time, name, sex, company, job, phone, email, follow, follow_name, pick_up_user, certificates, accompany, translate
+    </sql>
+
+    <select id="findAllUsers" resultMap="BaseResultMap">
+        select * from t_user where certificates != 100
+        <if test="lrole != null">
+            and create_by = #{lrole}
+        </if>
+        <if test="search != null and search != ''">
+            and(name like CONCAT('%',#{search},'%')
+            or company like CONCAT('%',#{search},'%')
+            or phone like CONCAT('%',#{search},'%'))
+        </if>
+        order by create_time desc
+    </select>
+
+</mapper>

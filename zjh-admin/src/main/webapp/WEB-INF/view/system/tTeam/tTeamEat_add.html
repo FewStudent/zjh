@@ -1,0 +1,51 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <form id="eatF">
+                <div class="row">
+                    <input type="hidden" id="teamId" name="teamId" value="${teamId}">
+                    <div class="col-sm-6 b-r">
+                        <#select id="restaurant" name="餐饮" underline="true">
+                            <option value="晚宴">晚宴</option>
+                            <option value="围餐">围餐</option>
+                            <option value="自助餐（午餐）">自助餐（午餐）</option>
+                            <option value="自助餐（晚餐）">自助餐（晚餐）</option>
+                            <option value="工作餐">工作餐</option>
+                        </#select>
+                        <#input id="restaurantDate" name="用餐时间" underline="true"/>
+                        <#input id="restaurantPeoples" name="用餐人数" underline="true"/>
+                        <#input id="restaurantAttention" name="注意事项" underline="true"/>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <#select id="payType" name="付费方式"  underline="true">
+                            <option value="0">自费</option>
+                            <option value="1">公费</option>
+                            <option value="2">其他（请于备注填写）</option>
+                        </#select>
+                        <#input id="remarkName" name="联系人" underline="true"/>
+                        <#input id="remarkContent" name="备注内容" underline="true"/>
+                    </div>
+                </div>
+            </form>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TTeamInfoDlg.addEatSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TTeamInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeam/tTeam_info.js"></script>
+<script>
+    $(function () {
+        laydate.render({
+            elem:'#restaurantDate',
+            type:'datetime'
+        })
+    })
+</script>
+@}

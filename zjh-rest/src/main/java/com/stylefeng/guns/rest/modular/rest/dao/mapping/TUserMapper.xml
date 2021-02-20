@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.rest.modular.rest.dao.TUserMapper">
+
+    <select id="findAllUsers" resultType="com.stylefeng.guns.rest.modular.rest.model.TUser">
+        select * from t_user
+        <if test="seach != null and seach != ''">
+            where company like CONCAT('%',#{seach},'%')
+            or phone like CONCAT('%',#{seach},'%')
+            or name like CONCAT('%',#{seach},'%')
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,104 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <!--个人信息-->
+            <div class="row">
+                <div class="row">
+				<!--不显示字段-->
+				<h3>个人信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="createTime" underline="true" name="创建时间" value="${item.createTime}"
+						disabled="true" />
+					<#input   id="name" name="用户姓名" underline="true" value="${item.name}"
+						disabled="true" />
+					<input type="hidden" id="sexVal" value="${item.sex}" />
+					<#select  id="sex" name="性别" underline="true" disabled="true">
+					<option value="0">男</option>
+					<option value="1">女</option>
+					</#select>
+					<#input disabled="true"  id="company" name="公司/单位" underline="true"
+						value="${item.company}" disabled="true" />
+				</div>
+				<div class="col-sm-6">
+
+					<#input disabled="true"  id="job" name="职务" underline="true" value="${item.job}"
+						disabled="true" />
+					<input type="hidden" id="cardVal" value="${item.card}" />
+					<#select disabled="true"  id="card" name="证件类型" underline="true">
+						<option value="0">贵宾证</option>
+						<option value="1">嘉宾证</option>
+						<option value="2">参观证</option>
+					</#select>
+
+					<#input disabled="true"  id="pickUp" name="嘉宾对接" underline="true"
+						value="${item.pickUp}" disabled="true" />
+				</div>
+			</div>
+			<hr>
+            </div>
+            <!--档案信息-->
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>档案信息</h3>
+                </div>
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" id="id" name="主键id" value="${item.id}" underline="true"/>
+                    <#input disabled="true"  id="a1" name="创建时间" value="${item.createTime}" underline="true"/>
+                    <#input disabled="true"  id="a2" name="活动" value="${item.activity}" underline="true"/>
+                    <#input disabled="true"  id="a3" name="简介" value="${item.personalSynopsis}" underline="true"/>
+                    <input id="roleVal" value="${item.role}" hidden="hidden" />
+                    <#select id="role" name="角色" underline="true">
+                    <option value="0">主持人</option>
+                    <option value="1">演讲嘉宾</option>
+                    <option value="2">观众</option>
+                </#select>
+                    <#input disabled="true"  id="a5" name="演讲主题" value="${item.speechTopic}" underline="true"/>
+                    
+                </div>
+                <div class="col-sm-6">
+                    <#input disabled="true"  id="a8" name="开户账号" value="${item.account}" underline="true"/>
+                    <#input disabled="true"  id="a6" name="开户姓名" value="${item.accountName}" underline="true"/>
+                    <#input disabled="true"  id="a7" name="开户银行" value="${item.accountBlank}" underline="true"/>
+                    <#input disabled="true"  id="a11" name="审核状态" value="${item.activityStatusName}" underline="true"/>
+                    <#input disabled="true"  id="a13" name="审核备注人" value="${item.activityStatusReamrkName}" underline="true"/>
+                    <#input disabled="true"  id="a14" name="审核备注内容" value="${item.activityStatusRemark}" underline="true"/>
+                </div>
+                @if(sfiles != null){
+                <div class="col-sm-12">
+                    <h3>演讲材料</h3>
+                    @for(sfile in sfiles){
+                    <div class="col-sm-4" style="text-align: center">
+                        <img width="100px" height="100%" src="${ctxPath}/static/img/file.png">
+                        <p><a href="${ctxPath}/file/download?file_name=${sfile.newFileName}" style="cursor: pointer;">${sfile.oldFileName}</a></p>
+                    </div>
+                    @}
+                </div>
+                @}
+                @if(photos != null){
+                <div class="col-sm-12">
+                    <h3>个人证件照</h3>
+                    @for(photo in photos){
+                    <div class="col-sm-4" style="padding-bottom: 5px;">
+                        <img width="100%" height="120ppx" src="${ctxPath}/file/download?file_name=${photo.newFileName}">
+                    </div>
+                    @}
+                </div>
+                @}
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="TUserArchivesInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUserArchives/tUserArchives_info.js"></script>
+<script>
+    $(function(){
+    });
+</script>
+@}

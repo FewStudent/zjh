@@ -1,0 +1,210 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#select id="filed1" name="词条" underline="false">
+                            <option value="">请选择词条</option>
+							<option value="company">公司/单位</option>
+                            <option value="link_phone">联系人电话</option>
+                            
+                            <option value="j_traffic_num">接车航班车次</option>
+                            <option value="j_use_car_date">接车用车日期(格式：2017-10-12)</option>
+                            <option value="j_use_car_time">接车用车时间(格式：10:12:12)</option>
+                            <option value="j_ride_place">接车乘车地点</option>
+                            <option value="j_ride_peoples">接车坐车人数</option>
+                            <option value="j_pay_type">接车付费方式( 0：自费   1：公费 2:其他)</option>
+                            <option value="j_accompany_leader">接车陪同领导</option>
+                            <option value="j_has_stop_card">接车是否有停车证(0：否   1：是)</option>
+                            <option value="j_add_remark">接车添加的备注信息</option>
+                            <option value="j_car_arrange">接车安排状态(0：未安排  1：已安排)</option>
+                            <option value="j_driver">接车安排司机姓名</option>
+                            <option value="j_driver_phone">接车安排联系电话</option>
+                            <option value="j_car_card">接车安排车的车牌号</option>
+                            <option value="j_car_type">接车安排的车类型</option>
+                            <option value="j_car_s_type">接车安排的接送情况(0：未接送  1：已接送)</option>
+                            <option value="j_arrange_remark">接车安排备注内容</option>
+                            
+                            <option value="s_use_car_date">送车用车日期(格式：2017-10-12)</option>
+                            <option value="s_use_car_date">送车用车日期(格式：2017-10-12)</option>
+                            <option value="s_use_car_time">送车用车时间(格式：10:12:12)</option>
+                            <option value="s_ride_place">送车乘车地点</option>
+                            <option value="s_ride_peoples">送车坐车人数</option>
+                            <option value="s_pay_type">送车付费方式( 0：自费   1：公费 2:其他)</option>
+                            <option value="s_accompany_leader">送车陪同领导</option>
+                            <option value="s_has_stop_card">送车是否有停车证(0：否   1：是)</option>
+                            <option value="s_add_remark">送车添加的备注信息</option>
+                            <option value="s_car_arrange">送车安排状态(0：未安排  1：已安排)</option>
+                            <option value="s_driver">送车安排司机姓名</option>
+                            <option value="s_driver_phone">送车安排联系电话</option>
+                            <option value="s_car_card">送车安排车的车牌号</option>
+                            <option value="s_car_type">送车安排的车类型</option>
+                            <option value="s_car_s_type">送车安排的接送情况(0：未接送  1：已接送)</option>
+                            <option value="s_arrange_remark">送车安排备注内容</option>
+                            
+                            <option value="c_use_car_date">市区用车日期(格式：2017-10-12)</option>
+                            <option value="c_use_car_date">市区用车日期(格式：2017-10-12)</option>
+                            <option value="c_use_car_time">市区用车时间(格式：10:12:12)</option>
+                            <option value="c_ride_place">市区用车乘车地点</option>
+                            <option value="c_ride_peoples">市区用车坐车人数</option>
+                            <option value="c_pay_type">市区用车付费方式( 0：自费   1：公费 2:其他)</option>
+                            <option value="c_accompany_leader">市区用车陪同领导</option>
+                            <option value="c_has_stop_card">市区用车是否有停车证(0：否   1：是)</option>
+                            <option value="c_add_remark">市区用车添加的备注信息</option>
+                            <option value="c_car_arrange">市区用车安排状态(0：未安排  1：已安排)</option>
+                            <option value="c_driver">市区用车安排司机姓名</option>
+                            <option value="c_driver_phone">市区用车安排联系电话</option>
+                            <option value="c_car_card">市区用车安排车的车牌号</option>
+                            <option value="c_car_type">市区用车安排的车类型</option>
+                            <option value="c_car_s_type">市区用车安排的接送情况(0：未接送  1：已接送)</option>
+                            <option value="c_arrange_remark">市区用车安排备注内容</option>
+                            
+                            
+                            <option value="car_status">用车审核状态(0：未审核  1：已审核  2：已退回)</option>
+                            <option value="car_status_reamrk_name">用车审核备注人</option>
+                            <option value="car_end">用车结束(0：未结束   1：已结束)</option>
+                            <option value="car_end_remark_name">用车结束备注人</option>
+                            <option value="car_end_remark">用车结束备注</option>
+                            </#select>
+                        </div>
+                        <div class="col-sm-2">
+                            <#NameCon id="value1" name="搜索" placeholder="内容" />
+                        </div>
+                        <div class="col-sm-3">
+                            <#select id="filed2" name="词条" underline="false">
+                            <option value="">请选择词条</option>
+							<option value="company">公司/单位</option>
+                            <option value="link_phone">联系人电话</option>
+                            
+                            <option value="j_traffic_num">接车航班车次</option>
+                            <option value="j_use_car_date">接车用车日期(格式：2017-10-12)</option>
+                            <option value="j_use_car_time">接车用车时间(格式：10:12:12)</option>
+                            <option value="j_ride_place">接车乘车地点</option>
+                            <option value="j_ride_peoples">接车坐车人数</option>
+                            <option value="j_pay_type">接车付费方式( 0：自费   1：公费 2:其他)</option>
+                            <option value="j_accompany_leader">接车陪同领导</option>
+                            <option value="j_has_stop_card">接车是否有停车证(0：否   1：是)</option>
+                            <option value="j_add_remark">接车添加的备注信息</option>
+                            <option value="j_car_arrange">接车安排状态(0：未安排  1：已安排)</option>
+                            <option value="j_driver">接车安排司机姓名</option>
+                            <option value="j_driver_phone">接车安排联系电话</option>
+                            <option value="j_car_card">接车安排车的车牌号</option>
+                            <option value="j_car_type">接车安排的车类型</option>
+                            <option value="j_car_s_type">接车安排的接送情况(0：未接送  1：已接送)</option>
+                            <option value="j_arrange_remark">接车安排备注内容</option>
+                            
+                            <option value="s_use_car_date">送车用车日期(格式：2017-10-12)</option>
+                            <option value="s_use_car_date">送车用车日期(格式：2017-10-12)</option>
+                            <option value="s_use_car_time">送车用车时间(格式：10:12:12)</option>
+                            <option value="s_ride_place">送车乘车地点</option>
+                            <option value="s_ride_peoples">送车坐车人数</option>
+                            <option value="s_pay_type">送车付费方式( 0：自费   1：公费 2:其他)</option>
+                            <option value="s_accompany_leader">送车陪同领导</option>
+                            <option value="s_has_stop_card">送车是否有停车证(0：否   1：是)</option>
+                            <option value="s_add_remark">送车添加的备注信息</option>
+                            <option value="s_car_arrange">送车安排状态(0：未安排  1：已安排)</option>
+                            <option value="s_driver">送车安排司机姓名</option>
+                            <option value="s_driver_phone">送车安排联系电话</option>
+                            <option value="s_car_card">送车安排车的车牌号</option>
+                            <option value="s_car_type">送车安排的车类型</option>
+                            <option value="s_car_s_type">送车安排的接送情况(0：未接送  1：已接送)</option>
+                            <option value="s_arrange_remark">送车安排备注内容</option>
+                            
+                            <option value="c_use_car_date">市区用车日期(格式：2017-10-12)</option>
+                            <option value="c_use_car_date">市区用车日期(格式：2017-10-12)</option>
+                            <option value="c_use_car_time">市区用车时间(格式：10:12:12)</option>
+                            <option value="c_ride_place">市区用车乘车地点</option>
+                            <option value="c_ride_peoples">市区用车坐车人数</option>
+                            <option value="c_pay_type">市区用车付费方式( 0：自费   1：公费 2:其他)</option>
+                            <option value="c_accompany_leader">市区用车陪同领导</option>
+                            <option value="c_has_stop_card">市区用车是否有停车证(0：否   1：是)</option>
+                            <option value="c_add_remark">市区用车添加的备注信息</option>
+                            <option value="c_car_arrange">市区用车安排状态(0：未安排  1：已安排)</option>
+                            <option value="c_driver">市区用车安排司机姓名</option>
+                            <option value="c_driver_phone">市区用车安排联系电话</option>
+                            <option value="c_car_card">市区用车安排车的车牌号</option>
+                            <option value="c_car_type">市区用车安排的车类型</option>
+                            <option value="c_car_s_type">市区用车安排的接送情况(0：未接送  1：已接送)</option>
+                            <option value="c_arrange_remark">市区用车安排备注内容</option>
+                            
+                            
+                            <option value="car_status">用车审核状态(0：未审核  1：已审核  2：已退回)</option>
+                            <option value="car_status_reamrk_name">用车审核备注人</option>
+                            <option value="car_end">用车结束(0：未结束   1：已结束)</option>
+                            <option value="car_end_remark_name">用车结束备注人</option>
+                            <option value="car_end_remark">用车结束备注</option>
+                        </#select>
+                        
+	                    </div>
+                          <div class="col-sm-2">
+                            <#NameCon id="value2" name="搜索" placeholder="内容" />
+                        </div>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="col-sm-4" style="line-height: 35px;text-align: right">
+                            审核状态
+                        </div>
+                        <div class="col-sm-8">
+                            <select name="" id="status" class="form-control">
+                                <option value="-1">请选择审核状态...</option>
+                                <option value="0">未审核</option>
+                                <option value="1">已审核</option>
+                                <option value="2">已退回</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="col-sm-4" style="line-height: 35px;text-align: right">
+                            结束状态
+                        </div>
+                        <div class="col-sm-8">
+                            <select name="" id="end" class="form-control">
+                                <option value="-1">请选择结束状态...</option>
+                                <option value="0">未结束</option>
+                                <option value="1">已结束</option>
+                            </select>
+                        </div>
+                    </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="TTeamCar.search()"/>
+                                <#button name="重置" icon="fa-trash" clickFun="TTeamCar.reset()"/>
+                            </div>
+                        </div>
+                        <div id="TTeamCarTableToolbar" role="group">
+                            @if(shiro.hasPermission("/tTeamCar/tTeamCar_update")){
+                                <#button name="修改" icon="fa-edit" clickFun="TTeamCar.openTTeamCarDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeamCar/tTeamCar_detail")){
+                            <#button name="详情" icon="fa-remove" clickFun="TTeamCar.detail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeamCar/examine")){
+                            <#button name="审核" icon="fa-remove" clickFun="TTeamCar.examine()" space="true"/>
+                            @}
+                             @if(shiro.hasPermission("/tTeamCar/make")){
+                            <#button name="安排" icon="fa-remove" clickFun="TTeamCar.make()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeamCar/end")){
+                            <#button name="结束" icon="fa-remove" clickFun="TTeamCar.end()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeamCar/exclude")){
+                            <a href="${ctxPath}/tTeamCar/exclude" class="btn btn-primary" style="margin-left: 15px;"><i class="fa fa-remove"></i>&nbsp;导出</a>
+                            @}
+                        </div>
+                        <#table id="TTeamCarTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeamCar/tTeamCar.js"></script>
+@}

@@ -1,0 +1,140 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<div class="row">
+				<!--不显示字段-->
+				<input type="hidden" id="id" value="${item.id}"> <input
+					type="hidden" id="createBy" value="${item.createBy}"> <input
+					type="hidden" id="createTime" value="${item.createTime}">
+				<!--不显示字段-->
+				<h3>个人信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="name" name="用户姓名" underline="true" value="${item.name}" />
+					<input type="hidden" id="sexVal" value="${item.sex}" />
+					<#select id="sex" name="性别" underline="true">
+					<option value="0">男</option>
+					<option value="1">女</option>
+					</#select>
+					<#input id="company" name="公司/单位" underline="true"
+						value="${item.company}" />
+					<#input id="job" name="职务" underline="true" value="${item.job}" />
+				</div>
+				<div class="col-sm-6">
+
+					<input type="hidden" id="cardVal" value="${item.card}" />
+					<#select id="card" name="证件类型" underline="true">
+					<option value="0">贵宾证</option>
+					<option value="1">嘉宾证</option>
+					<option value="2">参观证</option>
+					</#select>
+
+					<#input id="pickUp" name="嘉宾对接" underline="true"
+						value="${item.pickUp}" />
+					<#input id="linkPhone" name="联系人电话" value="${item.linkPhone}"
+						undeline="true"/>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<!--不显示字段-->
+				<h3>详细信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="follow" name="跟随人员" underline="true"
+						value="${item.follow}" />
+					<#input id="accompany" name="陪同人员" value="${item.accompany}"
+						underline="true" />
+					<#input id="translater" name="翻译人员" value="${item.translate}" underline="true"/>
+				</div>
+				<div class="col-sm-6">
+					<#input id="phone" name="电话号码" underline="true"
+						value="${item.phone}" />
+					<#input id="email" name="邮件" underline="true" value="${item.email}" />
+				</div>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="TUserInfoDlg.editSubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="TUserInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUser/tUser_info.js"></script>
+<script>
+	laydate.render({
+	    elem: '#jUseCarDate'
+	});
+	laydate.render({
+	    elem: '#jUseCarTime',
+	    type:'time'
+	});
+	laydate.render({
+	    elem: '#sUseCarDate'
+	});
+	laydate.render({
+	    elem: '#sUseCarTime',
+	    type:'time'
+	});
+	laydate.render({
+	    elem: '#cUseCarDate'
+	});
+	laydate.render({
+	    elem: '#cUseCarTime',
+	    type:'time'
+	});
+	laydate.render({
+	    elem: '#houseInDate',
+	   	type:'datetime'
+	});
+	laydate.render({
+	    elem: '#houseOutDate',
+	    type:'datetime'
+	});
+
+
+    // 删除文件
+    function deleteSFile(obj){
+        var fileid = $(obj).attr("filename");
+        var dataform = "fileid=" + fileid + "&aid=" + $("#id").val();
+        $.ajax({
+            type: 'post',
+            url: Feng.ctxPath + '/tUserArchives/delete_sfile',
+            data: dataform,
+            dataType: 'json',
+            success: function (result) {
+                if(result == "success"){
+                    $(obj).parent().remove();
+                }
+                layer.msg(result);
+            }, error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+
+    function deletePFile(obj){
+        var fileid = $(obj).attr("filename");
+        var dataform = "fileid=" + fileid + "&aid=" + $("#id").val();
+        $.ajax({
+            type: 'post',
+            url: Feng.ctxPath + '/tUserArchives/delete_pfile',
+            data: dataform,
+            dataType: 'json',
+            success: function (result) {
+                if(result == "success"){
+                    $(obj).parent().remove();
+                }
+                layer.msg(result);
+            }, error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+</script>
+@}

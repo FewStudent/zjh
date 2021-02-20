@@ -1,0 +1,74 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#select id="filed1" name="词条" underline="false">
+                                    <option value="">请选择词条</option>
+                                    <option value="company">公司/单位</option>
+                                    <option value="area">区域</option>
+                                    <option value="company_leader">公司负责人姓名</option>
+                                    <option value="link_user">团队联系人姓名</option>
+                                    <option value="link_phone">联系人电话</option>
+                                    <option value="pick_up">嘉宾对接人姓名</option>
+                                </#select>
+                            </div>
+                            <div class="col-sm-2">
+                                <#NameCon id="value1" name="搜索" placeholder="内容" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#select id="filed2" name="词条" underline="false">
+                                    <option value="">请选择词条</option>
+                                    <option value="company">公司/单位</option>
+                                    <option value="area">区域</option>
+                                    <option value="company_leader">公司负责人姓名</option>
+                                    <option value="link_user">团队联系人姓名</option>
+                                    <option value="link_phone">联系人电话</option>
+                                    <option value="pick_up">嘉宾对接人姓名</option>
+                                </#select>
+                            </div>
+                            <div class="col-sm-2">
+                                <#NameCon id="value2" name="搜索" placeholder="内容"/>
+                            </div>
+                            <div class="col-sm-2">
+                                <#button name="搜索" icon="fa-search" clickFun="TTeam.search()"/>
+                                <#button name="重置" icon="fa-trash" clickFun="TTeam.reset()"/>
+                            </div>
+                        </div>
+                        <div id="TTeamTableToolbar" role="group">
+                            @if(shiro.hasPermission("/tTeam/tTeam_add")){
+                                <#button name="添加" icon="fa-plus" clickFun="TTeam.openAddTTeam()"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeam/tTeam_update")){
+                                <#button name="修改" icon="fa-edit" clickFun="TTeam.openTTeamDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeam/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="TTeam.delete()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeam/tTeam_detail")){
+                                <#button name="详情" icon="fa-remove" clickFun="TTeam.detail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeam/include")){
+                            <#button name="导入" icon="fa-remove" clickFun="TTeam.include()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tTeam/exclude")){
+                                <a href="${ctxPath}/tTeam/exclude" class="btn btn-primary" style="margin-left: 15px;"><i class="fa fa-remove"></i>&nbsp;导出</a>
+                            @}
+
+                        </div>
+                        <#table id="TTeamTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeam/tTeam.js"></script>
+@}

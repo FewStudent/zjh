@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.TTeamEatMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.stylefeng.guns.modular.system.model.TTeamEat">
+        <id column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="team_id" property="teamId"/>
+        <result column="restaurant" property="restaurant"/>
+        <result column="restaurant_date" property="restaurantDate"/>
+        <result column="restaurant_peoples" property="restaurantPeoples"/>
+        <result column="restaurant_attention" property="restaurantAttention"/>
+        <result column="pay_type" property="payType"/>
+        <result column="status" property="status"/>
+        <result column="end" property="end"/>
+        <result column="remark_name" property="remarkName"/>
+        <result column="remark_content" property="remarkContent"/>
+        <result column="status_date" property="statusDate"/>
+        <result column="end_date" property="endDate"/>
+        <result column="s_remark_name" property="sRemarkName"/>
+        <result column="s_remark_content" property="sRemarkContent"/>
+        <result column="e_remark_name" property="eRemarkName"/>
+        <result column="e_remark_content" property="eRemarkContent"/>
+        <result column="a_remark_name" property="aRemarkName"/>
+        <result column="a_remark_content" property="aRemarkContent"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, create_time, update_time, team_id, restaurant, restaurant_date, restaurant_peoples, restaurant_attention, pay_type, status, end, remark_name, remark_content, status_date, end_date, s_remark_name, s_remark_content, e_remark_name, e_remark_content, a_remark_name, a_remark_content
+    </sql>
+
+    <select id="findAllTeamEats" resultMap="BaseResultMap">
+        select a.*,b.company AS teamIdName,b.contacts_phone AS contacts from t_team_eat a,t_team b where a.team_id = b.id
+        <if test="status != null">
+            and a.status = #{status}
+        </if>
+        <if test="lrole != null">
+            and b.create_by = #{lrole}
+        </if>
+        <if test="end != null">
+            and a.end = #{end}
+        </if>
+        <if test="search != null and search != ''">
+            and (b.company like CONCAT('%',#{search},'%')
+            or b.contacts_phone like CONCAT('%',#{search},'%')
+            or b.company_leader like CONCAT('%',#{search},'%'))
+        </if>
+        order by create_time desc
+    </select>
+
+</mapper>

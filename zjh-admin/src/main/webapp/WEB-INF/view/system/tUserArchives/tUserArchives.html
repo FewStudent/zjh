@@ -1,0 +1,87 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                	<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-3">
+                                <#select id="filed1" name="词条" underline="false">
+                                <option value="">请选择词条</option>
+								<option value="name">用户</option>
+								<option value="personal_synopsis">简介</option>
+								<option value="activity">参与活动</option>
+								<option value=speech_topic>演讲主题</option>
+								<option value="account_name">开户姓名</option>
+								<option value="account_blank">开户银行</option>
+								<option value="account">开户账号</option>
+                            </#select>
+                        </div>
+                        <div class="col-sm-2">
+                            <#NameCon id="value1" name="搜索" placeholder="内容" />
+                        </div>
+                        <div class="col-sm-3">
+                            <#select id="filed2" name="词条" underline="false">
+                            <option value="">请选择词条</option>
+							<option value="name">用户</option>
+							<option value="personal_synopsis">简介</option>
+							<option value="activity">参与活动</option>
+							<option value=speech_topic>演讲主题</option>
+							<option value="account_name">开户姓名</option>
+							<option value="account_blank">开户银行</option>
+							<option value="account">开户账号</option>
+                        </#select>
+                    </div>
+                    <div class="col-sm-2">
+                        <#NameCon id="value2" name="搜索" placeholder="内容" />
+                    </div>
+
+						</div>
+					</div>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="col-sm-4" style="line-height: 35px;text-align: right">
+                                    审核状态
+                                </div>
+                                <div class="col-sm-8">
+                                    <select name="" id="status" class="form-control">
+                                        <option value="-1">请选择审核状态...</option>
+                                        <option value="0">未审核</option>
+                                        <option value="1">已审核</option>
+                                        <option value="2">已退回</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="TUserArchives.search()"/>
+                                <#button name="重置" icon="fa-trash" clickFun="TUserArchives.reset()"/>
+                            </div>
+                        </div>
+                        <div id="TUserArchivesTableToolbar" role="group">
+                            @if(shiro.hasPermission("/tUserArchives/tUserArchives_update")){
+                                <#button name="修改" icon="fa-edit" clickFun="TUserArchives.openTUserArchivesDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserArchives/tUserArchives_detail")){
+                            <#button name="详情" icon="fa-remove" clickFun="TUserArchives.detail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserArchives/examine")){
+                            <#button name="审核" icon="fa-remove" clickFun="TUserArchives.examine()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserArchives/exclude")){
+                            <a href="${ctxPath}/tUserArchives/exclude" class="btn btn-primary" style="margin-left: 15px;"><i class="fa fa-remove"></i>&nbsp;导出</a>
+                            @}
+                        </div>
+                        <#table id="TUserArchivesTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUserArchives/tUserArchives.js"></script>
+@}

@@ -1,0 +1,306 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+            	<h3>基本信息</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+                    <#input id="name" name="姓名" underline="true"/>
+                    <#select id="sex" name="性别" underline="true">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </#select>
+                    <#input id="company" name="公司/单位" underline="true"/>
+                    <#input id="job" name="职务" underline="true"/>
+                   
+                </div>
+
+                <div class="col-sm-6">
+                    <#select id="card" name="证件类型" underline="true">
+                       <option value="0">贵宾证</option>
+                       <option value="1">嘉宾证</option>
+                       <option value="2">参观证</option>
+                    </#select>
+                    <#input id="pickUp" name="嘉宾对接人" underline="true"/>
+                    <#input id="linkPhone" name="联系人电话" undeline="true"/>
+                    
+                </div>
+            </div>
+            <hr>
+           <div class="row">
+            	<h3>详细信息</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+                     <#input id="phone" name="电话号码" underline="true"/>
+                     <#input id="email" name="邮件" underline="true"/>
+                </div>
+
+                <div class="col-sm-6">
+                	<#input id="follow" name="跟随人员" underline="true" />
+                    <#input id="accompany" name="陪同人员" underline="true"/>
+                    <#input id="translate" name="翻译人员" underline="true"/>
+                </div>
+            </div>
+            
+			<hr>
+			
+            <div class="row">
+            	<h3>个人用车-接车</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+					 <#input id="jUseCarDate" type="text" name="接车日期" underline="true"/>
+					 <#input id="jUseCarTime" type="text" name="接车时间" underline="true"/>
+					 <#input id="jTrafficNum"  name="接车航班车次" underline="true"/>
+					 <#input id="jRidePlace"  name="乘车地点" underline="true"/>
+					 <#input id="jDestination"  name="目的地" underline="true"/>
+                </div>
+
+                <div class="col-sm-6">
+               		<#input id="jRidePeoples"  name="人数" underline="true"/>
+					<#input id="jAccompanyLeader" name="陪同领导" underline="true"/>
+					<#select id="jPayType" name="付费方式" underline="true">
+						<option value="0">自费</option>
+					 	<option value="1">公费</option>
+					 	<option value="2">其他(填写备注信息)</option>
+					</#select>
+					<#select id="jHasStopCard" name="是否有停车证" underline="true">
+				 		<option value="0">否</option>
+				 		<option value="1">是</option>
+				 	</#select>
+				 	<#input id="jAddRemark" name="备注信息" underline="true" />
+                </div>
+            </div>
+            
+			<hr>
+			
+            <div class="row">
+            	<h3>个人用车-送车</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+					 <#input id="sUseCarDate" type="text" name="送车日期" underline="true"/>
+					 <#input id="sUseCarTime" type="text" name="送车时间" underline="true"/>
+					 <#input id="sTrafficNum"  name="送车航班车次" underline="true"/>
+					 <#input id="sRidePlace"  name="乘车地点" underline="true"/>
+					 <#input id="sDestination"  name="目的地" underline="true"/>
+                </div>
+
+                <div class="col-sm-6">
+               		<#input id="sRidePeoples"  name="人数" underline="true"/>
+					<#input id="sAccompanyLeader" name="陪同领导" underline="true"/>
+					<#select id="sPayType" name="付费方式" underline="true">
+						<option value="0">自费</option>
+					 	<option value="1">公费</option>
+					 	<option value="2">其他(填写备注信息)</option>
+					</#select>
+					<#select id="sHasStopCard" name="是否有停车证" underline="true">
+				 		<option value="0">否</option>
+				 		<option value="1">是</option>
+				 	</#select>
+				 	<#input id="sAddRemark" name="备注信息" underline="true" />
+                </div>
+            </div>
+            
+             
+			<hr>
+			
+            <div class="row">
+            	<h3>个人用车-市内</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+					 <#input id="cUseCarDate" type="text" name="接车日期" underline="true"/>
+					 <#input id="cUseCarTime" type="text" name="接车时间" underline="true"/>
+					 <#input id="cRidePlace"  name="乘车地点" underline="true"/>
+					 <#input id="cDestination"  name="目的地" underline="true"/>
+                </div>
+
+                <div class="col-sm-6">
+               		<#input id="cRidePeoples"  name="人数" underline="true"/>
+					<#input id="cAccompanyLeader" name="陪同领导" underline="true"/>
+					<#select id="cPayType" name="付费方式" underline="true">
+						<option value="0">自费</option>
+					 	<option value="1">公费</option>
+					 	<option value="2">其他(填写备注信息)</option>
+					</#select>
+					<#select id="cHasStopCard" name="是否有停车证" underline="true">
+				 		<option value="0">否</option>
+				 		<option value="1">是</option>
+				 	</#select>
+				 	<#input id="cAddRemark" name="备注信息" underline="true" />
+                </div>
+            </div>
+             
+			<hr>
+			
+            <div class="row">
+            	<h3>个人用餐</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+                    <#select id="eatDinner" name="晚宴" underline="true">
+				 		<option value="0">否</option>
+				 		<option value="1">是</option>
+				 	</#select>
+				 	<#input id="eatLunch" type="number" name="自助午餐" underline="true" />
+				 	<#input id="eatWorkMeal" type="number" name="工作餐" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                	<#select id="eatPayType" name="支付方式" underline="true">
+				 		<option value="0">自费</option>
+				 		<option value="1">公费</option>
+				 		<option value="2">其他(填写备注信息)</option>
+				 	</#select>
+				 	<#input id="eatAddRemark" name="备注" underline="true" />
+				 	<#input id="eatAttention" name="注意事项" underline="true" />
+                </div>
+            </div>
+             
+			<hr>
+			
+            <div class="row">
+            	<h3>个人住房</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+                    <#input id="houseInDate" type="text" name="入住时间" underline="true" />
+                    
+                    <#input id="hotelName" name="酒店名称" underline="true" />
+                    <#input id="hotelRoomNum" name="入住房间号" underline="true" />
+                    <#input id="hotelRoomType" name="房间类型" underline="true" />
+                    <#input id="hotelVacant" name="空置床位" underline="true" />
+                   	<#input id="price" name="单价" type="number" underline="true" />
+                    <#input id="totalPrice" name="总价" type="number" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                	<#input id="houseOutDate" type="text" name="退房时间" underline="true" />
+                    <#input id="roomTotal" name="房间总数" type="number" underline="true" />
+					<#select id="spliceRoom" name="是否拼房" underline="true">
+				 		<option value="否">否</option>
+				 		<option value="是">是</option>
+				 	</#select>
+                    <#input id="splicePeople" name="拼房人名" underline="true" />
+					<#select id="housePayType" name="付费方式" underline="true">
+				 		<option value="0">自费</option>
+				 		<option value="1">公费</option>
+				 		<option value="2">其他(填写备注信息)</option>
+				 	</#select>                    
+                    <#input id="houseAddRemark" name="备注" underline="true" />
+                </div>
+            </div>
+             
+			<hr>
+			
+            <div class="row">
+            	<h3>参与活动</h3>
+                <div class="col-sm-6 b-r">
+                    <p id="tip" style="color: red;font-size: 12px;"></p>
+                    <#input id="activity" name="参与活动" underline="true" />
+                    <#input id="accountName" name="开户姓名" underline="true" />
+                    <#input id="accountBlank" name="开户银行" underline="true" />
+                    <#input id="account" name="开户账号" underline="true" />
+                </div>
+
+                <div class="col-sm-6">
+                	<#input id="personalSynopsis" type="text" name="个人简介" underline="true" />
+                    <#select id="role" name="个人角色" underline="true">
+				 		<option value="0">主持人</option>
+				 		<option value="1">演讲嘉宾</option>
+				 		<option value="2">观众</option>
+				 	</#select>    
+                    <#input id="speechTopic" name="演讲主题" underline="true" />
+                    <#input id="activityAddRemark" name="备注" underline="true" />
+                    <#input id="activityAddRemarkName" name="备注人" underline="true" />
+                </div>
+                <!--演讲材料-->
+                <input type="hidden" id="sfile" value="">
+                <input type="hidden" id="imgfile" value="">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>演讲材料：</h4>
+                    </div>
+                    <div id="uploader" class="wu-example col-sm-9">
+                        <!--用来存放文件信息-->
+                        <div id="thelist" class="uploader-list"></div>
+                        <div class="btns">
+                            <div id="picker">选择演讲材料</div>
+                        </div>
+                    </div>
+                </div>
+                <!--活动相片-->
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>个人证件照：</h4>
+                    </div>
+                    <div id="uploader1" class="wu-example col-sm-9">
+                        <div id="uploader-demo">
+                            <!--用来存放item-->
+                            <div id="fileList" class="uploader-list row"></div>
+                            <div id="filePicker" style="clear: both;margin-top: 15px;">选择图片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="TUserInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="TUserInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUser/tUser_info.js"></script>
+<script>
+    $(function () {
+        $("#name").on('input propertychange',function () {
+            var dt = $("#name").val();
+            $.ajax({
+                type: 'post',
+                url: Feng.ctxPath + '/tUser/findConpanyName',
+                data: {'cp':dt},
+                dataType: 'json',
+                success:function (result) {
+                    if(result == "ok"){
+                        $("#tip").text("已存在相同的客户名称，请注意");
+                    }else{
+                        $("#tip").text("");
+                    }
+                }
+            })
+        });
+    });
+</script>
+<script>
+    laydate.render({
+        elem: '#jUseCarDate'
+    });
+    laydate.render({
+        elem: '#jUseCarTime',
+        type:'time'
+    });
+    laydate.render({
+        elem: '#sUseCarDate'
+    });
+    laydate.render({
+        elem: '#sUseCarTime',
+        type:'time'
+    });
+    laydate.render({
+        elem: '#cUseCarDate'
+    });
+    laydate.render({
+        elem: '#cUseCarTime',
+        type:'time'
+    });
+    laydate.render({
+        elem: '#houseInDate',
+       	type:'datetime'
+    });
+    laydate.render({
+        elem: '#houseOutDate',
+        type:'datetime'
+    });
+</script>
+@}

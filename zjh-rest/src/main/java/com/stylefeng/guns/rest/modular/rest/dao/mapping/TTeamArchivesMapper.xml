@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.rest.modular.rest.dao.TTeamArchivesMapper">
+
+    <select id="findAllTTeamArchives" resultType="com.stylefeng.guns.rest.modular.rest.model.TTeamArchives">
+        SELECT * from t_team_archives where s_status != 5
+        <if test="status != null">
+            and s_status = #{status}
+        </if>
+        <if test="seach != null and seach != ''">
+            and account_name like CONCAT('%',#{seach},'%')
+        </if>
+    </select>
+</mapper>

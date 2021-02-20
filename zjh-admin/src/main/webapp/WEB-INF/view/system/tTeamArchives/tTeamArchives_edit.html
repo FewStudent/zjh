@@ -1,0 +1,176 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+           <div class="row">
+                <!--不显示字段-->
+                <h3>基本信息</h3>
+                <div class="col-sm-6 b-r">
+                    <#input id="createTime" name="创建时间" value="${item.createTime}" disabled="true" underline="true" />
+                    <#input id="company" name="公司/单位" value="${item.company}" underline="true" disabled="true"/>
+                    <#input id="companyLeader" name="公司负责人" value="${item.companyLeader}" underline="true" disabled="true"/>
+                    <#input id="area" name="所属区域" value="${item.area}" underline="true" disabled="true"/>
+                    <input type="hidden" id="cardVal" value="${item.card}">
+                    <#select id="card" name="证件类型">
+                    <option value="0">贵宾证</option>
+                    <option value="1">嘉宾证</option>
+                    <option value="2">参观证</option>
+                </#select>
+                </div>
+                <div class="col-sm-6">
+                    <#input id="pickUp" name="嘉宾对接" underline="true" value="${item.pickUp}" disabled="true" />
+                    <#input id="teamNums" type="number" name="团队人数" underline="true" value="${item.teamNums}" disabled="true" />
+                    <#input id="linkUser" name="团队联系人" underline="true" value="${item.linkUser}" disabled="true" />
+                    <#input id="linkPhone" name="团队联系人电话" underline="true" value="${item.linkPhone}" disabled="true" />
+                </div>
+            </div>
+    <div class="row">
+        <h3>活动信息</h3>
+        <div class="col-sm-6 b-r">
+            <input type="hidden" id="id" name="主键id" value="${item.id}" underline="true"/>
+            <#input id="activity" name="活动" value="${item.activity}" underline="true"/>
+            <#input id="personalSynopsis" name="简介" value="${item.personalSynopsis}" underline="true"/>
+            <input type="hidden" id="roleVal" name="角色" value="${item.role}" underline="true"/>
+            <#select id="role" name="角色" underline="true">
+            <option value="0">主持人</option>
+            <option value="1">演讲嘉宾</option>
+            <option value="2">观众</option>
+        </#select>
+        <#input id="speechTopic" name="演讲主题" value="${item.speechTopic}" underline="true"/>
+        <#input id="accountName" name="开户姓名" value="${item.accountName}" />
+    </div>
+
+    <div class="col-sm-6">
+        <#input id="accountBlank" name="开户行" value="${item.accountBlank}" underline="true"/>
+        <#input id="account" name="开户账号" value="${item.account}" underline="true"/>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <h3>审核信息</h3>
+    <div class="col-sm-6 b-r">
+        <#input disabled="true" value="${item.activityStatusRemark}" id="activityStatusRemark"
+        name="备注" underline="true" />
+        <#input disabled="true" value="${item.activityStatusReamrkName}" id="activityStatusReamrkName"
+        name="备注" underline="true" />
+    </div>
+    <div class="col-sm-6">
+        <input type="hidden" value="${item.activityStatus}" id="activityStatusVal" />
+        <#select id="activityStatus" name="审核状态" underline="true">
+        <option value="0">未审核</option>
+        <option value="1">已审核</option>
+        <option value="2">已退回</option>
+    </#select>
+</div>
+</div>
+<hr>
+<div class="row">
+    <input type="hidden" id="sfile" value="">
+    <input type="hidden" id="imgfile" value="">
+                @if(sfiles != null){
+                <div class="col-sm-12">
+                    <h3>演讲材料</h3>
+                    @for(sfile in sfiles){
+                    <div class="col-sm-4" style="position: relative;text-align: center;">
+                        <a href="${ctxPath}/file/download?file_name=${sfile.newFileName}" style="cursor: pointer;">
+                            <img width="100px" height="100%" src="${ctxPath}/static/img/file.png">
+                            <p>${sfile.oldFileName}</p>
+                        </a>
+                        <i class="fa fa-times" filename="${sfile.id}" onclick="deleteSFile(this);" aria-hidden="true" style="position: relative;z-index: 100;color: red;top: -130px;right: -62px;font-size: 20px;"></i>
+                    </div>
+                    @}
+                </div>
+                @}
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>新增演讲材料：</h4>
+                    </div>
+                    <div id="uploader" class="wu-example col-sm-9">
+                        <!--用来存放文件信息-->
+                        <div id="thelist" class="uploader-list"></div>
+                        <div class="btns">
+                            <div id="picker">选择演讲材料</div>
+                        </div>
+                    </div>
+                </div>
+                @if(photos != null){
+                <div class="col-sm-12">
+                    <h3>个人证件照</h3>
+                    @for(photo in photos){
+                    <div class="col-sm-4" style="padding-bottom: 5px;position: relative;">
+                        <img width="100%" height="120ppx" src="${ctxPath}/file/download?file_name=${photo.newFileName}">
+                        <i class="fa fa-times" filename="${photo.id}" onclick="deletePFile(this);" aria-hidden="true" style="position: relative;color: red;top: -119px;right: -188px;font-size: 16px;"></i>
+                    </div>
+                    @}
+                </div>
+                @}
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h4>新增个人证件照：</h4>
+                    </div>
+                    <div id="uploader1" class="wu-example col-sm-9">
+                        <div id="uploader-demo">
+                            <!--用来存放item-->
+                            <div id="fileList" class="uploader-list row"></div>
+                            <div id="filePicker" style="clear: both;margin-top: 15px;">选择图片</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+                    clickFun="TTeamArchivesInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+                    clickFun="TTeamArchivesInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeamArchives/tTeamArchives_info.js"></script>
+<script>
+
+    // 删除文件
+    function deleteSFile(obj){
+        var fileid = $(obj).attr("filename");
+        var dataform = "fileid=" + fileid + "&aid=" + $("#id").val();
+        $.ajax({
+            type: 'post',
+            url: Feng.ctxPath + '/tTeamArchives/delete_sfile',
+            data: dataform,
+            dataType: 'json',
+            success: function (result) {
+                if(result == "success"){
+                    $(obj).parent().remove();
+                }
+                layer.msg(result);
+            }, error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+
+    function deletePFile(obj){
+        var fileid = $(obj).attr("filename");
+        var dataform = "fileid=" + fileid + "&aid=" + $("#id").val();
+        $.ajax({
+            type: 'post',
+            url: Feng.ctxPath + '/tTeamArchives/delete_pfile',
+            data: dataform,
+            dataType: 'json',
+            success: function (result) {
+                if(result == "success"){
+                    $(obj).parent().remove();
+                }
+                layer.msg(result);
+            }, error: function (xhr) {
+                console.log(xhr);
+            }
+        });
+    }
+</script>
+@}

@@ -1,0 +1,278 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+            <!--隐藏字段-->
+            <input type="hidden" id="id" name="id" value="${item.id}"/>
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#input id="createTime" name="创建时间" value="${item.createTime}" disabled="true"/>
+                    <#input disabled="true" id="company" name="公司名称" underline="true" value="${item.company}" disabled="true"/>
+                    <#input id="companyLeader" name="公司负责人" underline="true" value="${item.companyLeader}" disabled="true"/>
+                    <#input id="pickUp" name="嘉宾对接人" underline="true" value="${item.pickUp}" disabled="true"/>
+                    <input type="hidden" id="cardVal" value="${item.card}">
+                    <#select id="card" name="证件类型" disabled="true">
+                        <option value="0">贵宾证</option>
+                        <option value="1">嘉宾证</option>
+                        <option value="2">参观证</option>
+                    </#select>
+            </div>
+
+            <div class="col-sm-6">
+                <#input id="area" name="所属区域" underline="true" value="${item.area}" disabled="true"/>
+                <#input id="teamNums" name="团队人数" underline="true" value="${item.teamNums}" disabled="true"/>
+                <#input id="linkUser" name="团队联系人" underline="true" value="${item.linkUser}" disabled="true"/>
+                <#input id="linkPhone" name="联系人电话" underline="true" value="${item.linkPhone}" disabled="true"/>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <h3>团队用车-接车</h3>
+            <div class="col-sm-6 b-r">
+                <#input disabled="true" id="jUseCarDate" value="${item.jUseCarDate}" name="接车日期"
+                underline="true" />
+                <#input disabled="true" id="jUseCarTime" value="${item.jUseCarTime}" name="接车时间"
+                underline="true" />
+                <#input disabled="true" id="jTrafficNum" value="${item.jTrafficNum}" name="接车航班车次"
+                underline="true" />
+                <#input disabled="true" value="${item.jRidePlace}" id="jRidePlace" name="乘车地点"
+                underline="true" />
+                <#input disabled="true" value="${item.jDestination}" id="jDestination" name="目的地"
+                underline="true" />
+            </div>
+            <div class="col-sm-6">
+                <#input disabled="true" value="${item.jRidePeoples}" id="jRidePeoples" name="人数"
+                underline="true" />
+                <#input disabled="true" value="${item.jAccompanyLeader}" id="jAccompanyLeader"
+                name="陪同领导" underline="true" />
+                <input value="${item.jPayType}" id="jPayTypeVal" type="hidden" />
+                <#select id="jPayType" name="付费方式" underline="true">
+                    <option value="0">自费</option>
+                    <option value="1">公费</option>
+                    <option value="2">其他(填写备注信息)</option>
+                </#select>
+                <input value="${item.jHasStopCard}" id="jHasStopCardVal"
+                       type="hidden" />
+                <#select id="jHasStopCard" name="是否有停车证" underline="true">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </#select>
+                <#input disabled="true" value="${item.jAddRemark}" id="jAddRemark" name="备注信息"
+                underline="true" />
+            </div>
+        </div>
+<hr>
+        <div class="row">
+            <h3>团队用车-送车</h3>
+            <div class="col-sm-6 b-r">
+                <p id="tip" style="color: red; font-size: 12px;"></p>
+                <#input disabled="true" value="${item.sUseCarDate}" id="sUseCarDate" type="text"
+                name="送车日期" underline="true" />
+                <#input disabled="true" value="${item.sUseCarTime}" id="sUseCarTime" type="text"
+                name="送车时间" underline="true" />
+                <#input disabled="true" value="${item.sTrafficNum}" id="sTrafficNum" name="送车航班车次"
+                underline="true" />
+                <#input disabled="true" value="${item.sRidePlace}" id="sRidePlace" name="乘车地点"
+                underline="true" />
+                <#input disabled="true" value="${item.sDestination}" id="sDestination" name="目的地"
+                underline="true" />
+            </div>
+
+            <div class="col-sm-6">
+                <#input disabled="true" value="${item.sRidePeoples}" id="sRidePeoples" name="人数"
+                underline="true" />
+                <#input disabled="true" value="${item.sAccompanyLeader}" id="sAccompanyLeader"
+                name="陪同领导" underline="true" />
+                <input type="hidden" value="${item.sPayType}" id="sPayTypeVal" />
+                <#select id="sPayType" name="付费方式" underline="true">
+                    <option value="0">自费</option>
+                    <option value="1">公费</option>
+                    <option value="2">其他(填写备注信息)</option>
+                </#select>
+                <input type="hidden" value="${item.sHasStopCard}"
+                       id="sHasStopCardVal" />
+                <#select id="sHasStopCard" name="是否有停车证" underline="true">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </#select>
+                <#input disabled="true" value="${item.sAddRemark}" id="sAddRemark" name="备注信息"
+            underline="true" />
+            </div>
+        </div>
+<hr>
+        <div class="row">
+            <h3>团队用车-市内</h3>
+            <div class="col-sm-6 b-r">
+                <p id="tip" style="color: red; font-size: 12px;"></p>
+                <#input disabled="true" value="${item.cUseCarDate}" id="cUseCarDate" type="text"
+                name="接车日期" underline="true" />
+                <#input disabled="true" value="${item.cUseCarTime}" id="cUseCarTime" type="text"
+                name="接车时间" underline="true" />
+                <#input disabled="true" value="${item.cRidePlace}" id="cRidePlace" name="乘车地点"
+                underline="true" />
+                <#input disabled="true" value="${item.cDestination}" id="cDestination" name="目的地"
+                underline="true" />
+            </div>
+
+            <div class="col-sm-6">
+                <#input disabled="true" value="${item.cRidePeoples}" id="cRidePeoples" name="人数"
+                underline="true" />
+                <#input disabled="true" value="${item.cAccompanyLeader}" id="cAccompanyLeader"
+                name="陪同领导" underline="true" />
+                <input type="hidden" value="${item.cPayType}" id="cPayTypeVal" />
+                <#select id="cPayType" name="付费方式" underline="true">
+                    <option value="0">自费</option>
+                    <option value="1">公费</option>
+                    <option value="2">其他(填写备注信息)</option>
+                </#select>
+                <input type="hidden" value="${item.cHasStopCard}"
+                   id="cHasStopCardVal" />
+                <#select id="cHasStopCard" name="是否有停车证" underline="true">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </#select>
+                <#input disabled="true" value="${item.cAddRemark}" id="cAddRemark" name="备注信息"
+                underline="true" />
+            </div>
+        </div>
+<hr>
+        <div class="row">
+            <h3>团队用餐</h3>
+            <div class="col-sm-6 b-r">
+                <p id="tip" style="color: red; font-size: 12px;"></p>
+                <input type="hidden" value="${item.eatDinner}" id="eatDinnerVal" />
+                <#select id="eatDinner" name="晚宴" underline="true">
+                    <option value="0">否</option>
+                    <option value="1">是</option>
+                </#select>
+                <#input disabled="true" value="${item.eatLunch}" id="eatLunch" type="number"
+                name="自助午餐" underline="true" />
+                <#input disabled="true" value="${item.eatWorkMeal}" id="eatWorkMeal" type="number"
+                name="工作餐" underline="true" />
+            </div>
+
+            <div class="col-sm-6">
+                <input type="hidden" value="${item.eatPayType}" id="eatPayTypeVal" />
+                <#select id="eatPayType" name="支付方式" underline="true">
+                    <option value="0">自费</option>
+                    <option value="1">公费</option>
+                    <option value="2">其他(填写备注信息)</option>
+                </#select>
+                <#input disabled="true" value="${item.eatAddRemark}" id="eatAddRemark" name="备注"
+                underline="true" />
+                <#input disabled="true" value="${item.eatAttention}" id="eatAttention" name="注意事项"
+                underline="true" />
+            </div>
+        </div>
+<hr>
+        <div class="row">
+            <h3>团队住房</h3>
+            <div class="col-sm-6 b-r">
+                <p id="tip" style="color: red; font-size: 12px;"></p>
+                <#input disabled="true" value="${item.houseInDate}" id="houseInDate" type="text"
+                name="入住时间" underline="true" />
+                <#input disabled="true" value="${item.hotelName}" id="hotelName" name="酒店名称"
+                underline="true" />
+                <#input disabled="true" value="${item.hotelRoomNum}" id="hotelRoomNum" name="入住房间号"
+                underline="true" />
+                <#input disabled="true" value="${item.hotelRoomType}" id="hotelRoomType"
+                name="房间类型" underline="true" />
+                <#input disabled="true" value="${item.hotelVacant}" id="hotelVacant" name="空置床位"
+                underline="true" />
+                <#input disabled="true" value="${item.price}" id="price" name="单价" type="number"
+                underline="true" />
+                <#input disabled="true" value="${item.totalPrice}" id="totalPrice" name="总价"
+                type="number" underline="true" />
+            </div>
+
+            <div class="col-sm-6">
+                <#input disabled="true" value="${item.houseOutDate}" id="houseOutDate" type="text"
+                name="退房时间" underline="true" />
+                <#input disabled="true" value="${item.roomTotal}" id="roomTotal" name="房间总数"
+                type="number" underline="true" />
+                <input type="hidden" value="${item.spliceRoom}" id="spliceRoomVal" />
+                <#select id="spliceRoom" name="是否拼房" underline="true">
+                    <option value="否">否</option>
+                    <option value="是">是</option>
+                </#select>
+                <#input disabled="true" value="${item.splicePeople}" id="splicePeople" name="拼房人名"
+                underline="true" />
+                <input type="hidden" value="${item.housePayType}"
+                       id="housePayTypeVal" />
+                <#select id="housePayType" name="付费方式" underline="true">
+                    <option value="0">自费</option>
+                    <option value="1">公费</option>
+                    <option value="2">其他(填写备注信息)</option>
+                </#select>
+                <#input disabled="true" value="${item.houseAddRemark}" id="houseAddRemark"
+                name="备注" underline="true" />
+            </div>
+        </div>
+
+<hr>
+
+        <div class="row">
+            <h3>参与活动</h3>
+            <div class="col-sm-6 b-r">
+                <p id="tip" style="color: red; font-size: 12px;"></p>
+                <#input disabled="true" value="${item.activity}" id="activity" name="参与活动"
+                underline="true" />
+                <#input disabled="true" value="${item.accountName}" id="accountName" name="开户姓名"
+                underline="true" />
+                <#input disabled="true" value="${item.accountBlank}" id="accountBlank" name="开户银行"
+                underline="true" />
+                <#input disabled="true" value="${item.account}" id="account" name="开户账号"
+                underline="true" />
+            </div>
+
+            <div class="col-sm-6">
+                <#input disabled="true" value="${item.personalSynopsis}" id="personalSynopsis"
+                type="text" name="个人简介" underline="true" />
+                <input type="hidden" value="${item.role}" id="roleVal" />
+                <#select id="role" name="个人角色" underline="true">
+                    <option value="0">主持人</option>
+                    <option value="1">演讲嘉宾</option>
+                    <option value="2">观众</option>
+                </#select>
+                <#input disabled="true" value="${item.speechTopic}" id="speechTopic" name="演讲主题"
+                underline="true" />
+                <#input disabled="true" value="${item.activityAddRemark}" id="activityAddRemark"
+                name="备注" underline="true" />
+                <#input disabled="true" value="${item.activityAddRemarkName}"
+                id="activityAddRemarkName" name="备注人" underline="true" />
+            </div>
+            @if(sfiles != null){
+            <div class="col-sm-12">
+                <h3>演讲材料</h3>
+                @for(sfile in sfiles){
+                <div class="col-sm-4" style="text-align: center;">
+                    <img width="100px" height="100%" src="${ctxPath}/static/img/file.png">
+                    <p><a href="${ctxPath}/file/download?file_name=${sfile.newFileName}" style="cursor: pointer;">${sfile.oldFileName}</a></p>
+                </div>
+                @}
+            </div>
+            @}
+            @if(photos != null){
+            <div class="col-sm-12">
+                <h3>个人证件照</h3>
+                @for(photo in photos){
+                <div class="col-sm-4" style="padding-bottom: 5px;">
+                    <img width="100%" height="120ppx" src="${ctxPath}/file/download?file_name=${photo.newFileName}">
+                </div>
+                @}
+            </div>
+            @}
+        </div>
+    </div>
+        <div class="row btn-group-m-t">
+            <div class="col-sm-10">
+                <#button btnCss="danger" name="确定" id="cancel" icon="fa-eraser" clickFun="TTeamInfoDlg.close()"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+<script src="${ctxPath}/static/modular/system/tTeam/tTeam_info.js"></script>
+@}

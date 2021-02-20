@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.modular.system.dao.TNewUserMapper">
+
+	<!-- 通用查询映射结果 -->
+	<resultMap id="BaseResultMap"
+		type="com.stylefeng.guns.modular.system.model.TNewUser">
+		<id column="id" property="id" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="name" property="name" />
+		<result column="sex" property="sex" />
+		<result column="company" property="company" />
+		<result column="job" property="job" />
+		<result column="card" property="card" />
+		<result column="pick_up" property="pickUp" />
+		<result column="link_phone" property="linkPhone" />
+		<result column="phone" property="phone" />
+		<result column="follow" property="follow" />
+		<result column="accompany" property="accompany" />
+		<result column="translate" property="translate" />
+		<result column="email" property="email" />
+		<result column="j_use_car_date" property="jUseCarDate" />
+		<result column="j_use_car_time" property="jUseCarTime" />
+		<result column="j_traffic_num" property="jTrafficNum" />
+		<result column="j_ride_place" property="jRidePlace" />
+		<result column="j_destination" property="jDestination" />
+		<result column="j_ride_peoples" property="jRidePeoples" />
+		<result column="j_accompany_leader" property="jAccompanyLeader" />
+		<result column="j_pay_type" property="jPayType" />
+		<result column="j_has_stop_card" property="jHasStopCard" />
+		<result column="j_add_remark" property="jAddRemark" />
+		<result column="j_car_arrange" property="jCarArrange" />
+		<result column="j_driver" property="jDriver" />
+		<result column="j_driver_phone" property="jDriverPhone" />
+		<result column="j_car_card" property="jCarCard" />
+		<result column="j_car_type" property="jCarType" />
+		<result column="j_car_s_type" property="jCarSType" />
+		<result column="j_arrange_remark" property="jArrangeRemark" />
+		<result column="s_use_car_date" property="sUseCarDate" />
+		<result column="s_use_car_time" property="sUseCarTime" />
+		<result column="s_traffic_num" property="sTrafficNum" />
+		<result column="s_ride_place" property="sRidePlace" />
+		<result column="s_destination" property="sDestination" />
+		<result column="s_ride_peoples" property="sRidePeoples" />
+		<result column="s_accompany_leader" property="sAccompanyLeader" />
+		<result column="s_pay_type" property="sPayType" />
+		<result column="s_has_stop_card" property="sHasStopCard" />
+		<result column="s_add_remark" property="sAddRemark" />
+		<result column="s_car_arrange" property="sCarArrange" />
+		<result column="s_driver" property="sDriver" />
+		<result column="s_driver_phone" property="sDriverPhone" />
+		<result column="s_car_card" property="sCarCard" />
+		<result column="s_car_type" property="sCarType" />
+		<result column="s_car_s_type" property="sCarSType" />
+		<result column="s_arrange_remark" property="sArrangeRemark" />
+		<result column="c_use_car_date" property="cUseCarDate" />
+		<result column="c_use_car_time" property="cUseCarTime" />
+		<result column="c_ride_place" property="cRidePlace" />
+		<result column="c_destination" property="cDestination" />
+		<result column="c_ride_peoples" property="cRidePeoples" />
+		<result column="c_accompany_leader" property="cAccompanyLeader" />
+		<result column="c_pay_type" property="cPayType" />
+		<result column="c_has_stop_card" property="cHasStopCard" />
+		<result column="c_add_remark" property="cAddRemark" />
+		<result column="c_car_arrange" property="cCarArrange" />
+		<result column="c_driver" property="cDriver" />
+		<result column="c_driver_phone" property="cDriverPhone" />
+		<result column="c_car_card" property="cCarCard" />
+		<result column="c_car_type" property="cCarType" />
+		<result column="c_car_s_type" property="cCarSType" />
+		<result column="c_arrange_remark" property="cArrangeRemark" />
+		<result column="car_status" property="carStatus" />
+		<result column="car_status_reamrk_name" property="carStatusReamrkName" />
+		<result column="car_status_remark" property="carStatusRemark" />
+		<result column="car_end" property="carEnd" />
+		<result column="car_end_remark_name" property="carEndRemarkName" />
+		<result column="car_end_remark" property="carEndRemark" />
+		<result column="eat_dinner" property="eatDinner" />
+		<result column="eat_lunch" property="eatLunch" />
+		<result column="eat_work_meal" property="eatWorkMeal" />
+		<result column="eat_pay_type" property="eatPayType" />
+		<result column="eat_add_remark" property="eatAddRemark" />
+		<result column="eat_attention" property="eatAttention" />
+		<result column="eat_status" property="eatStatus" />
+		<result column="eat_status_reamrk_name" property="eatStatusReamrkName" />
+		<result column="eat_status_remark" property="eatStatusRemark" />
+		<result column="eat_end" property="eatEnd" />
+		<result column="eat_end_remark_name" property="eatEndRemarkName" />
+		<result column="eat_end_remark" property="eatEndRemark" />
+		<result column="eat_arrange" property="eatArrange" />
+		<result column="eat_arrange_remark" property="eatArrangeRemark" />
+		<result column="house_in_date" property="houseInDate" />
+		<result column="house_out_date" property="houseOutDate" />
+		<result column="hotel_name" property="hotelName" />
+		<result column="hotel_room_num" property="hotelRoomNum" />
+		<result column="hotel_room_type" property="hotelRoomType" />
+		<result column="hotel_vacant" property="hotelVacant" />
+		<result column="price" property="price" />
+		<result column="splice_room" property="spliceRoom" />
+		<result column="splice_people" property="splicePeople" />
+		<result column="room_total" property="roomTotal" />
+		<result column="total_price" property="totalPrice" />
+		<result column="house_pay_type" property="housePayType" />
+		<result column="house_add_remark" property="houseAddRemark" />
+		<result column="house_status" property="houseStatus" />
+		<result column="house_status_reamrk_name" property="houseStatusReamrkName" />
+		<result column="house_status_remark" property="houseStatusRemark" />
+		<result column="house_end" property="houseEnd" />
+		<result column="house_end_remark_name" property="houseEndRemarkName" />
+		<result column="house_end_remark" property="houseEndRemark" />
+		<result column="house_arrange" property="houseArrange" />
+		<result column="house_arrange_remark" property="houseArrangeRemark" />
+		<result column="activity" property="activity" />
+		<result column="account_name" property="accountName" />
+		<result column="account_blank" property="accountBlank" />
+		<result column="account" property="account" />
+		<result column="personal_synopsis" property="personalSynopsis" />
+		<result column="role" property="role" />
+		<result column="speech_topic" property="speechTopic" />
+		<result column="activity_add_remark" property="activityAddRemark" />
+		<result column="activity_add_remark_name" property="activityAddRemarkName" />
+		<result column="speech_file" property="speechFile" />
+		<result column="photo_file" property="photoFile" />
+		<result column="activity_status" property="activityStatus" />
+		<result column="activity_status_reamrk_name" property="activityStatusReamrkName" />
+		<result column="activity_status_remark" property="activityStatusRemark" />
+		<result column="create_by" property="createBy" />
+	</resultMap>
+	
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		id, create_time, update_time, name, sex, company, job,
+		card, pick_up,
+		link_phone, phone, follow, accompany, translate, email,
+		j_use_car_date, j_use_car_time, j_traffic_num, j_ride_place,
+		j_destination, j_ride_peoples, j_accompany_leader,
+		j_pay_type,j_has_stop_card, j_add_remark, j_car_arrange, j_driver,
+		j_driver_phone, j_car_card, j_car_type, j_car_s_type,
+		j_arrange_remark,
+		s_use_car_date, s_use_car_time, s_traffic_num,
+		s_ride_place, s_destination,
+		s_ride_peoples, s_accompany_leader,
+		s_pay_type, s_has_stop_card,
+		s_add_remark, s_car_arrange, s_driver,
+		s_driver_phone, s_car_card,
+		s_car_type, s_car_s_type, s_arrange_remark,
+		c_use_car_date, c_use_car_time, c_ride_place, c_destination,
+		c_ride_peoples,
+		c_accompany_leader, c_pay_type, c_has_stop_card,
+		c_add_remark,
+		c_car_arrange,c_driver, c_driver_phone,c_car_card,
+		c_car_type,
+		c_car_s_type, c_arrange_remark, car_status,
+		car_status_reamrk_name,
+		car_status_remark, car_end,
+		car_end_remark_name, car_end_remark,
+		eat_dinner, eat_lunch,
+		eat_work_meal, eat_pay_type, eat_add_remark,
+		eat_attention, eat_status,
+		eat_status_reamrk_name, eat_status_remark,
+		eat_end,
+		eat_end_remark_name,eat_end_remark, eat_arrange,
+		eat_arrange_remark,
+		house_in_date, house_out_date, hotel_name, hotel_room_num,
+		hotel_room_type,
+		hotel_vacant, price, splice_room, splice_people,
+		room_total,
+		total_price, house_pay_type, house_add_remark,
+		house_status,
+		house_status_reamrk_name, house_status_remark, house_end,
+		house_end_remark_name,house_end_remark, house_arrange,
+		house_arrange_remark,
+		activity, account_name, account_blank, account,
+		personal_synopsis, role,
+		speech_topic, activity_add_remark,
+		activity_add_remark_name,
+		speech_file, photo_file, activity_status,
+		activity_status_reamrk_name,
+		activity_status_remark, create_by
+	</sql>
+	<sql id="user_all_info">
+		id, create_time, update_time, name, sex, company, job,
+		card, pick_up,
+		link_phone, phone, follow, accompany, translate,
+		email,create_by,car_status,eat_status,house_status,activity_status,car_end,eat_end,house_end
+	</sql>
+
+	<!-- 客户用车信息的结果列 -->
+	<sql id="user_and_car">
+		id, create_time, update_time, name, sex, company, job,
+		card, pick_up,
+		link_phone, phone, follow, accompany, translate, email,
+		j_use_car_date, j_use_car_time, j_traffic_num, j_ride_place,
+		j_destination, j_ride_peoples, j_accompany_leader,
+		j_pay_type,j_has_stop_card, j_add_remark, j_car_arrange, j_driver,
+		j_driver_phone, j_car_card, j_car_type, j_car_s_type,
+		j_arrange_remark,
+		s_use_car_date, s_use_car_time, s_traffic_num,
+		s_ride_place, s_destination,
+		s_ride_peoples, s_accompany_leader,
+		s_pay_type, s_has_stop_card,
+		s_add_remark, s_car_arrange, s_driver,
+		s_driver_phone, s_car_card,
+		s_car_type, s_car_s_type, s_arrange_remark,
+		c_use_car_date, c_use_car_time, c_ride_place, c_destination,
+		c_ride_peoples,
+		c_accompany_leader, c_pay_type, c_has_stop_card,
+		c_add_remark,
+		c_car_arrange,c_driver, c_driver_phone,c_car_card,
+		c_car_type,
+		c_car_s_type, c_arrange_remark, car_status,
+		car_status_reamrk_name,
+		car_status_remark, car_end,
+		car_end_remark_name, car_end_remark,
+		create_by
+	</sql>
+
+	<!-- 客户用餐信息结果列 -->
+	<sql id="user_and_eat">
+		id, create_time, update_time, name, sex, company, job,
+		card, pick_up,
+		link_phone, phone, follow, accompany, translate, email,
+		eat_dinner, eat_lunch, eat_work_meal, eat_pay_type, eat_add_remark,
+		eat_attention, eat_status, eat_status_reamrk_name, eat_status_remark,
+		eat_end, eat_end_remark_name,eat_end_remark, eat_arrange,
+		eat_arrange_remark,
+		create_by
+	</sql>
+
+	<!-- 客户住房信息结果列 -->
+	<sql id="user_and_house">
+		id,create_time, update_time, name, sex, company, job, card,
+		pick_up, link_phone,
+		phone, follow, accompany, translate, email,
+		house_in_date, house_out_date, hotel_name, hotel_room_num,
+		hotel_room_type,
+		hotel_vacant, price, splice_room, splice_people,
+		room_total,
+		total_price, house_pay_type, house_add_remark,
+		house_status,
+		house_status_reamrk_name, house_status_remark, house_end,
+		house_end_remark_name,house_end_remark, house_arrange,
+		house_arrange_remark,
+		create_by
+	</sql>
+
+	<!-- 客户活动信息结果列 -->
+	<sql id="user_and_activity">
+		id,create_time, update_time, name, sex, company, job, card,
+		pick_up, link_phone,
+		phone, follow, accompany, translate, email,
+		activity, account_name, account_blank, account, personal_synopsis,
+		role,
+		speech_topic, activity_add_remark, activity_add_remark_name,
+		speech_file, photo_file, activity_status, activity_status_reamrk_name,
+		activity_status_remark,
+		create_by
+	</sql>
+
+	<!-- 双字段查询条件的代码段 -->
+	<sql id="twoFileds">
+		<where>
+			<if test="filed1 != null and filed1 != '' and value1 != null and value1 != ''">
+				and ${filed1} like '%${value1}%'
+			</if>
+			<if test="filed2 != null and filed2 != '' and value2 != null and value2 != ''">
+				and ${filed2} like '%${value2}%'
+			</if>
+			<if test="status != null">
+				and house_status = #{status}
+			</if>
+			<if test="end != null">
+				and house_end = #{end}
+			</if>
+			<if test="create != null">
+				and create_by = ${create}
+			</if>
+		</where>
+	</sql>
+
+	<!-- 获取所有的客户信息 -->
+	<select id="queryAllUserInfo" resultMap="BaseResultMap">
+		select
+		<include refid="user_all_info"></include>
+		from t_new_user
+		<where>
+			<if test="create != null">
+				and create_by = #{create}
+			</if>
+		</where>
+	</select>
+
+	<!-- 获取单个客户的详情信息 -->
+	<select id="queryUserInfoById" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List"></include>
+		from t_new_user where id = #{id} 
+	</select>
+
+	<!-- 获取客户的所有用餐信息 -->
+	<select id="queryAllUserEat" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_eat"></include>
+		from t_new_user
+		<where>
+			<if test="create != null">
+				and create_by = #{create}
+			</if>
+		</where>
+	</select>
+
+	<!-- 获取客户的所用活动信息 -->
+	<select id="queryAllUserActivity" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_activity"></include>
+		from t_new_user
+		<where>
+			<if test="create != null">
+				and create_by = #{create}
+			</if>
+		</where>
+	</select>
+
+	<!-- 获取客户的所有住房信息 -->
+	<select id="queryAllUserHouse" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_house"></include>
+		from t_new_user
+		<where>
+			<if test="create != null">
+				and create_by = #{create}
+			</if>
+		</where>
+	</select>
+
+	<!-- 获取客户的所有用车信息 -->
+	<select id="queryAllUserCar" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_car"></include>
+		from t_new_user
+		<where>
+			<if test="create != null">
+				and create_by = #{create}
+			</if>
+		</where>
+	</select>
+
+	<!-- 获取客户的详细用车信息  -->
+	<select id="queryUserCarById" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_car"></include>
+		from t_new_user where id = #{id} limit 1
+	</select>
+
+	<!-- 获取客户的详细用餐信息 -->
+	<select id="queryUserEatById" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_eat"></include>
+		from t_new_user where id = #{id} limit 1
+	</select>
+
+	<!--  获取客户的详细住房信息 -->
+	<select id="queryUserHouseById" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_house"></include>
+		from t_new_user where id = #{id} limit 1
+	</select>
+
+	<!-- 获取客户的详细活动信息 -->
+	<select id="queryUserActivityById" resultMap="BaseResultMap">
+		select
+		<include refid="user_and_activity"></include>
+		from t_new_user where id = #{id} limit 1
+	</select>
+	
+	<!-- 根据两条字段进行查询客户信息 -->
+	<select id="queryUserInfoByFiled" resultMap="BaseResultMap">
+		select <include refid="user_all_info"></include> from t_new_user
+		<where>
+			<if test="filed1 != null and filed1 != '' and value1 != null and value1 != ''">
+				and ${filed1} like '%${value1}%'
+			</if>
+			<if test="filed2 != null and filed2 != '' and value2 != null and value2 != ''">
+				and ${filed2} like '%${value2}%'
+			</if>
+			<if test="create != null">
+				and create_by = #{create}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据活动的双字段以及审核状态进行查询 -->
+	<select id="queryUserActivityByFiled" resultMap="BaseResultMap">
+		select <include refid="user_and_activity"></include> from t_new_user 
+		<where>
+			<if test="filed1 != null and filed1 != '' and value1 != null and value1 != ''">
+				and ${filed1} like '%${value1}%'
+			</if>
+			<if test="filed2 != null and filed2 != '' and value2 != null and value2 != ''">
+				and ${filed2} like '%${value2}%'
+			</if>
+			<if test="status != null">
+				and activity_status = #{status}
+			</if>
+			<if test="create != null">
+				and create_by = ${create}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据双字段以及状态进行查询客户住房信息 -->
+	<select id="queryUserHouseByFiled" resultMap="BaseResultMap">
+		select <include refid="user_and_house"></include> from t_new_user 
+		<include refid="twoFileds"></include>
+	</select>
+	
+	<!-- 根据双字段以及状态进行查询客户的用车信息 -->
+	<select id="queryUserCarByFiled" resultMap="BaseResultMap">
+		select <include refid="user_and_car"></include> from t_new_user
+		<where>
+			<if test="filed1 != null and filed1 != '' and value1 != null and value1 != ''">
+				and ${filed1} like '%${value1}%'
+			</if>
+			<if test="filed2 != null and filed2 != '' and value2 != null and value2 != ''">
+				and ${filed2} like '%${value2}%'
+			</if>
+			<if test="status != null">
+				and car_status = #{status}
+			</if>
+			<if test="end != null">
+				and car_end = ${end}
+			</if>
+			<if test="create != null">
+				and create_by = ${create}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 根据双字段以及状态进行查询客户的用餐信息 -->
+	<select id="queryUserEatByFiled" resultMap="BaseResultMap">
+		select <include refid="user_and_eat"></include> from t_new_user
+		<where>
+			<if test="filed1 != null and filed1 != '' and value1 != null and value1 != ''">
+				and ${filed1} like '%${value1}%'
+			</if>
+			<if test="filed2 != null and filed2 != '' and value2 != null and value2 != ''">
+				and ${filed2} like '%${value2}%'
+			</if>
+			<if test="status != null">
+				and eat_status = #{status}
+			</if>
+			<if test="end != null">
+				and eat_end = #{end}
+			</if>
+			<if test="create != null">
+				and create_by = ${create}
+			</if>
+		</where>
+	</select>
+
+</mapper>

@@ -1,0 +1,115 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                	<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-3">
+								<#select id="filed1" name="词条" underline="false">
+								<option value="">请选择词条</option>
+                                <option value="name">用户姓名</option>
+                                <option value="sex">性别(0:男 1:女)</option>
+                                <option value="phone">联系电话</option>
+                                <option value="house_in_date">入住时间</option>
+                                <option value="house_out_date">退房时间</option>
+                                <option value=hotel_name>酒店名</option>
+                                <option value="hotel_room_type">房间类型</option>
+                                <option value="hotel_vacant">空置床位</option>
+                                <option value="splice_people">拼房人名</option>
+                                <option value="hotel_room_num">房间号</option>
+                                <option value="house_arrange">安排状态(0 未安排 1 已安排)</option>
+								</#select>
+							</div>
+							<div class="col-sm-2">
+								<#NameCon id="value1" name="搜索" placeholder="内容" />
+							</div>
+							<div class="col-sm-3">
+								<#select id="filed2" name="词条" underline="false">
+								<option value="">请选择词条</option>
+                                <option value="name">用户姓名</option>
+                                <option value="sex">性别(0:男 1:女)</option>
+                                <option value="phone">联系电话</option>
+                                <option value="house_in_date">入住时间</option>
+                                <option value="house_out_date">退房时间</option>
+                                <option value="hotel_name">酒店名</option>
+                                <option value="hotel_room_type">房间类型</option>
+                                <option value="hotel_vacant">空置床位</option>
+                                <option value="splice_people">拼房人名</option>
+                                <option value="hotel_room_num">房间号</option>
+                                <option value="house_arrange">安排状态(0 未安排 1 已安排)</option>
+								</#select>
+							</div>
+							<div class="col-sm-2">
+								<#NameCon id="value2" name="搜索" placeholder="内容" />
+							</div>
+
+						</div>
+					</div>
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="col-sm-4" style="line-height: 35px;text-align: right">
+                                    审核状态
+                                </div>
+                                <div class="col-sm-8">
+                                    <select name="" id="status" class="form-control">
+                                        <option value="-1">请选择审核状态...</option>
+                                        <option value="0">未审核</option>
+                                        <option value="1">已审核</option>
+                                        <option value="2">已退回</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="col-sm-4" style="line-height: 35px;text-align: right">
+                                    结束状态
+                                </div>
+                                <div class="col-sm-8">
+                                    <select name="" id="end" class="form-control">
+                                        <option value="-1">请选择结束状态...</option>
+                                        <option value="0">未结束</option>
+                                        <option value="1">已结束</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="TUserHouse.search()"/>
+                                <#button name="重置" icon="fa-trash" clickFun="TUserHouse.reset()"/>
+                            </div>
+                        </div>
+                        <div id="TUserHouseTableToolbar" role="group">
+                            @if(shiro.hasPermission("/tUserHouse/tUserHouse_update")){
+                                <#button name="修改" icon="fa-edit" clickFun="TUserHouse.openTUserHouseDetail()" space="true"/>
+                            @}
+
+                            @if(shiro.hasPermission("/tUserHouse/tUserHouse_detail")){
+                            <#button name="详情" icon="fa-remove" clickFun="TUserHouse.detail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserHouse/examine")){
+                            <#button name="审核" icon="fa-remove" clickFun="TUserHouse.examine()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserHouse/make")){
+                            <#button name="安排" icon="fa-remove" clickFun="TUserHouse.make()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserHouse/end")){
+                            <#button name="结束" icon="fa-remove" clickFun="TUserHouse.end()" space="true"/>
+                            @}
+                            
+                            @if(shiro.hasPermission("/tUserHouse/exclude")){
+                            <a href="${ctxPath}/tUserHouse/exclude" class="btn btn-primary" style="margin-left: 15px;"><i class="fa fa-remove"></i>&nbsp;导出</a>
+                            @}
+                        </div>
+                        <#table id="TUserHouseTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUserHouse/tUserHouse.js"></script>
+@}

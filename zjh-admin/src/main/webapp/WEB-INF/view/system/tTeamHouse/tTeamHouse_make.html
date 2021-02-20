@@ -1,0 +1,109 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<div class="row">
+				<!--不显示字段-->
+				<h3>基本信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input id="createTime" name="创建时间" value="${item.createTime}"
+						disabled="true" />
+					<#input id="company" name="公司/单位" underline="true" disabled="true" />
+					<#input id="companyLeader" name="公司负责人"
+						value="${item.companyLeader}" underline="true" disabled="true" />
+					<#input id="area" name="所属区域" value="${item.area}" underline="true"
+						disabled="true" />
+
+				</div>
+				<div class="col-sm-6">
+					<#input id="pickUp" name="嘉宾对接" underline="true"
+						value="${item.pickUp}" disabled="true" />
+					<#input id="teamNums" type="number" name="团队人数" underline="true"
+						value="${item.teamNums}" disabled="true" />
+					<#input id="linkUser" name="团队联系人" underline="true"
+						value="${item.linkUser}" disabled="true" />
+					<#input id="linkPhone" name="团队联系人电话" underline="true"
+						value="${item.linkPhone}" disabled="true" />
+				</div>
+			</div>
+			<hr>
+
+			<div class="row">
+				<h3>住房信息</h3>
+				<div class="col-sm-6 b-r">
+					<#input disabled="true" id="houseInDate" name="入住日期"
+						value="${item.houseInDate}" underline="true" />
+					<#input disabled="true" id="houseOutDate" name="退房日期"
+						value="${item.houseOutDate}" underline="true" />
+					<#input disabled="true" id="hotelName" name="酒店名称"
+						value="${item.hotelName}" underline="true" />
+					<#input disabled="true" id="hotelRoomType" name="房间类型"
+						value="${item.hotelRoomType}" underline="true" />
+					<#input disabled="true" id="price" name="单价" value="${item.price}"
+						underline="true" />
+					<#input disabled="true" id="roomTotal" name="房间数"
+						value="${item.roomTotal}" underline="true" />
+					<#input id="houseAddRemark" disabled="true" name="添加备注" value="${item.houseAddRemark}" />
+				</div>
+
+				<div class="col-sm-6">
+					<input type="hidden" id="payTypeVal" value="${item.housePayType}">
+					<#select id="housePayType" name="付费方式" underline="true">
+					<option value="0">自费</option>
+					<option value="1">公费</option>
+					<option value="2">其他（请于备注填写）</option>
+					</#select>
+					<#input disabled="true" id="totalPrice" name="总价格"
+						value="${item.totalPrice}" underline="true" />
+					<#input disabled="true" id="spliceRoom" name="是否拼房"
+						value="${item.spliceRoom}" underline="true" />
+					<#input disabled="true" id="splicePeople" name="拼房人姓名"
+						value="${item.splicePeople}" underline="true" />
+					<#input disabled="true" id="hotelRoomNum" name="入住房间号"
+						value="${item.hotelRoomNum}" underline="true" />
+					<#input disabled="true" id="hotelVacant" name="空置床位"
+						value="${item.hotelVacant}" />
+			</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 b-r">
+					<input type="hidden" id="id" name="id" value="${id}">
+					<#select id="arrange" name="安排" value="${item.houseEnd}" underline="true">
+					<option value="0">未安排</option>
+					<option value="1">已安排</option>
+					</#select>
+					<#input id="remark" value="${item.houseArrangeRemark}" name="备注内容"
+						underline="true" />
+				</div>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="TTeamHouseInfoDlg.makeSubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="TTeamHouseInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/modular/system/tTeamHouse/tTeamHouse_info.js"></script>
+<script>
+	$(function() {
+		laydate.render({
+			elem : '#houseInDate',
+			type : 'datetime'
+		});
+		
+		laydate.render({
+			elem : '#houseOutDate',
+			type : 'datetime'
+		});
+	})
+</script>
+@}

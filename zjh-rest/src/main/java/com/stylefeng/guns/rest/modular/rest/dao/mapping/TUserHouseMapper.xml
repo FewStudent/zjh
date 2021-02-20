@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.stylefeng.guns.rest.modular.rest.dao.TUserHouseMapper">
+
+    <select id="findAllUsersHouse" resultType="com.stylefeng.guns.rest.modular.rest.model.TUserHouse">
+        SELECT * from t_user_house where s_status != 5
+        <if test="status != null">
+            and s_status = #{status}
+        </if>
+        <if test="end != null">
+            and end = #{end}
+        </if>
+        <if test="seach != null and seach != ''">
+            and hotel like CONCAT('%',#{seach},'%')
+        </if>
+    </select>
+</mapper>

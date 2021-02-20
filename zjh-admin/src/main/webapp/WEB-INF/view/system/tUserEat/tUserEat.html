@@ -1,0 +1,103 @@
+@layout("/common/_container.html"){
+<div class="row">
+	<div class="col-sm-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>管理</h5>
+			</div>
+			<div class="ibox-content">
+				<div class="row row-lg">
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-3">
+								<#select id="filed1" name="词条" underline="false">
+								<option value="">请选择词条</option>
+								<option value="name">用户姓名</option>
+								<option value="phone">电话</option>
+								<option value="eat_dinner">晚宴(0：否  1：是)</option>
+								<option value="eat_lunch">午餐数量</option>
+								<option value="eat_work_meal">工作餐数量</option>
+								<option value="eat_attention">注意事项</option>
+								</#select>
+							</div>
+							<div class="col-sm-2">
+								<#NameCon id="value1" name="搜索" placeholder="内容" />
+							</div>
+							<div class="col-sm-3">
+								<#select id="filed2" name="词条" underline="false">
+								<option value="">请选择词条</option>
+								<option value="name">用户姓名</option>
+								<option value="phone">电话</option>
+								<option value="eat_dinner">晚宴(0：否  1：是)</option>
+								<option value="eat_lunch">午餐数量</option>
+								<option value="eat_work_meal">工作餐数量</option>
+								<option value="eat_attention">注意事项</option>
+								</#select>
+							</div>
+							<div class="col-sm-2">
+								<#NameCon id="value2" name="搜索" placeholder="内容" />
+							</div>
+
+						</div>
+					</div>
+					<div class="col-sm-12">
+
+						<div class="row">
+							<div class="col-sm-3">
+								<div class="col-sm-4"
+									style="line-height: 35px; text-align: right">审核状态</div>
+								<div class="col-sm-8">
+									<select name="" id="status" class="form-control">
+										<option value="-1">请选择审核状态...</option>
+										<option value="0">未审核</option>
+										<option value="1">已审核</option>
+										<option value="2">已退回</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<div class="col-sm-4"
+									style="line-height: 35px; text-align: right">结束状态</div>
+								<div class="col-sm-8">
+									<select name="" id="end" class="form-control">
+										<option value="-1">请选择结束状态...</option>
+										<option value="0">未结束</option>
+										<option value="1">已结束</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm-3">
+								<#button name="搜索" icon="fa-search" clickFun="TUserEat.search()" />
+								<#button name="重置" icon="fa-trash" clickFun="TUserEat.reset()" />
+							</div>
+						</div>
+						<div id="TUserEatTableToolbar" role="group">
+							@if(shiro.hasPermission("/tUserEat/tUserEat_update")){
+                                <#button name="修改" icon="fa-edit" clickFun="TUserEat.openTUserEatDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserEat/tUserEat_detail")){
+                            <#button name="详情" icon="fa-remove" clickFun="TUserEat.detail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserEat/examine")){
+                            <#button name="审核" icon="fa-remove" clickFun="TUserEat.examine()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserEat/make")){
+                            <#button name="安排" icon="fa-remove" clickFun="TUserEat.make()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/tUserEat/end")){
+                            <#button name="结束" icon="fa-remove" clickFun="TUserEat.end()" space="true"/>
+                            @}
+                            
+                            @if(shiro.hasPermission("/tUserEat/exclude")){
+                            <a href="${ctxPath}/tUserEat/exclude" class="btn btn-primary" style="margin-left: 15px;"><i class="fa fa-remove"></i>&nbsp;导出</a>
+                            @}
+						</div>
+						<#table id="TUserEatTable" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/tUserEat/tUserEat.js"></script>
+@}
